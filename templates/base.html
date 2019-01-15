@@ -1,0 +1,51 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>城市旅游最短路径系统</title>
+    <style>
+
+{#        *{#}
+{#            background: pink;#}
+{#        }#}
+        .first{
+            background: deeppink;
+
+
+        }
+        .first ul li{
+            list-style: none;
+            float: left;
+            line-height: 40px;
+            margin-left: 60px;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .first ul li a:hover{
+            color: gold;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="background-image: url{% static 'front/../front/static/323137.jpg' %}">
+        <div class="first">
+            <ul>
+                <li><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首页</a></li>
+                <li><a href="{% url 'dj_add' %}">&nbsp;&nbsp;&nbsp;发布新路径</a></li>
+                <li><a href="{% url 'update_dj' %}">&nbsp;&nbsp;&nbsp;路径修改</a></li>
+                <li><a href="{% url 'search_dj' %}">&nbsp;&nbsp;&nbsp;查找路径</a></li>
+            </ul>
+            <br>
+            <br>
+        </div>
+
+{% block content %}
+
+{% endblock %}
+</body>
+
+</html>

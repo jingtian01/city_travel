@@ -1,0 +1,3088 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="baidu-site-verification" content="4CSrh5AGbt" />
+		<title>长春-商品搜索-村头商城</title> 
+		<meta name="keywords" content="村头,村头商城,农村电商,乡村旅游,视频购物,土特产,农产品"/>
+		<meta name="description" content="村头,村头商城,乡村电商,农村旅游,视频购物,土特产,农产品"/>
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" content="ie=edge"/> -->
+	
+
+	
+
+
+<!-- 判断IE，并使IE9以下支持html5标签 -->
+<!–[if lt IE 9]> <script  src="/themes/b2b2cv2/js/html5.js"  ></script> <![endif]–>
+
+
+<script>
+	var member = "";
+	var loginDialog;
+	var ctx="";
+	var app_path="";
+	var _hmt = _hmt || [];
+	// 判断访问来源
+	function browserRedirect() {
+		 var sUserAgent = navigator.userAgent.toLowerCase();
+		 var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+		 var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+		 var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+		 var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+		 var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+		 var bIsAndroid = sUserAgent.match(/android/i) == "android";
+		 var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+		 var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+		 if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM){
+		  	window.location.href=ctx+"/download_app.html";
+		 }
+	}
+	browserRedirect();
+	
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d565e8ba76321f677998fefca4cfc320";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+<!-- 公共样式 -->
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/base.css" />
+<!-- 内含dialog.css样式，原来的dialog.css中无代码 -->
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/default.css" />
+<!-- 商品详细、 -->
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/shop.css" />
+
+<!--网站头部head样式-->
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/header.css" />
+
+<script  src="/themes/b2b2cv2/js/jquery.js"  ></script>
+<script  src="/themes/b2b2cv2/js/lhgdialog.js" ></script>
+<script  src="/themes/b2b2cv2/js/common.js"  ></script>
+<script  src="/themes/b2b2cv2/js/shop.js"></script>
+<script src="/themes/b2b2cv2/js/jquery.ui.js" ></script>
+<script src="/themes/b2b2cv2/js/index.js"></script>
+<script  src="/themes/b2b2cv2/js/jquery.validate.js"  ></script> 
+<script  src="/themes/b2b2cv2/js/jquery.form-3.51.js"  ></script> 
+<script  src="/themes/b2b2cv2/js/CartBar.js"></script>
+<script  src="/themes/b2b2cv2/js/jquery.blockUI.js"   ></script>
+<script  src="/themes/b2b2cv2/js/LoginDialog.js"  ></script>
+<script src="/themes/b2b2cv2/js/jquery.cookie.js" ></script>
+<script src="/themes/b2b2cv2/js/perfect-scrollbar.min.js"  ></script>
+<script src="/themes/b2b2cv2/js/jquery.mousewheel.js" ></script>
+<!-- jquery 布局 -->
+<script src="/themes/b2b2cv2/js/jquery.masonry.js" ></script> 
+<!-- 异步加载图片 -->
+<script src="/themes/b2b2cv2/js/jquery.scrollLoading-min.js" ></script>
+<!-- 轮播图js -->
+<script src="/themes/b2b2cv2/js/jquery.SuperSlide.2.1.1.js" ></script>
+<!-- jquery的布局插件 -->
+<script src="/themes/b2b2cv2/js/jquery.masonry.js" ></script>
+<!-- 购物车移入滚动条 -->
+<script src="/themes/b2b2cv2/js/jquery.nicescroll.js"></script>
+<script src="/themes/b2b2cv2/js/jquery.bigautocomplete.js"></script>
+<!-- 自定义滚动条 -->
+<script src="/themes/b2b2cv2/js/jquery.jscroll.js"></script>
+
+<script type="text/javascript">
+
+var ctx="";
+// 获取url参数，name是参数值
+function getQueryString(name){
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+
+// 获取cookie值
+function getCookie(name){
+	var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	if(arr=document.cookie.match(reg))
+	return unescape(arr[2]);
+	else
+	return null;
+}
+
+ 
+$(function(){
+	
+	$("body").scrollLoading();
+	 
+	// 判断是否登录
+	$("#header-menber").load("/common/member_bar.html?_="+new Date().getTime(), function(){
+		$("#logout").click(function(){
+			$.ajax({
+				url:"/api/shop/member!logout.do?ajax=yes",
+				dataType:"json",
+				cache: false,              
+				success:function(result){
+					if(result.result==1){
+						//$.alert(result.message);
+						location.href="/index.html";
+					}else{
+						$.alert(result.message);
+					}	
+					$.Loading.hide();
+				},
+				error:function(){
+					$.Loading.hide();
+					$.alert("出错了:(");
+				}
+			});
+			return false;
+		});	
+	});
+	
+	$(".my_store").load("/common/my_store.html?_="+new Date().getTime());
+		
+	$(".title_menu dl").hover(function() {
+		$(this).addClass("hover");
+	},function() {
+		$(this).removeClass("hover");
+	});
+	
+	// 显示工具栏
+    var wlshg = getQueryString("wlshg");
+	if(wlshg){
+		document.cookie="wlshg=1";  
+	} 
+	if(document.cookie.indexOf("wlshg")>=0){
+		$("#wlshg").show();
+	} 
+})
+
+</script>
+<style>
+	#wlshg{display: none; width:180px; height: 62px; padding-top:10px;    border-radius: 20px; text-align:center; background-color: #e0e0e0; position: absolute; top:40px; right:20px; z-index: 1000;}
+</style>
+
+</head>
+<body>
+	<div id="wlshg" style="">
+		<a  href="javascript:history.go(-1);"><img src="/themes/b2b2cv2/images/qj.png"/></a>
+		<a  href="javascript:history.go(1);"><img src="/themes/b2b2cv2/images/ht.png"/></a>
+		<a  href="javascript:window.opener=null;window.open('','_self');window.close();"><img src="/themes/b2b2cv2/images/gb.png"/></a>
+	</div>
+	<header id="header">
+		<div class="header-box">
+				<ul class="header-left show">
+					<li class="bj" title="切换" onclick="go('/region_list.html');">
+						区域：
+									<span id="travel_area_name">秀山</span>
+						<i class="ci-leftll">
+							<s class="jt">◇</s>
+						</i>
+					</li>		
+				</ul>
+			<ul class="header-right">
+				<li class="denglu" id="header-menber"></li> 
+				<li class="shu"></li>
+				<li class="denglu"><a  href="/index.html">商城首页</a></li>
+				<li class="shu"></li>
+				<li class="denglu"><a target="_blank"  href="/store/business_center.html?menu=store_index">商家中心</a></li>
+				<li class="shu"></li>
+				<li class="denglu"><a target="_blank"  href="/member/member.html">会员中心</a></li>
+				<li class="shu"></li>
+				<li class="kehu	 bj">
+					<a href="#">我的村头</a>
+					<i class="ci-right ">
+						<s class="jt">◇</s>
+					</i>
+					<div class="kehu1" style="width:200px; heigth:170px;">
+						<h3 class="neirong2"><a href="/member/order.html">我的订单</a></h3>
+						<ul class="kehu2" style="height:65px;">	
+							<li><a href="/member/order.html?status=0">待付款订单</a></li>
+							<li><a href="/member/order.html?status=5">商品已发货</a></li>
+							<li><a href="/member/waitcommont.html">待评价交易</a></li>
+						</ul>
+						<div>
+							<ul class="kehu3">
+								<h3 class="neirong2 ll"><a href="/member/favorite.html" target="_top">我的收藏</a></h3>
+								<li><a  href="/member/favorite.html" target="_top">收藏商品</a></li>
+								<li><a  href="/member/collect_store.html" target="_top">收藏店铺</a></li>
+							</ul>
+						</div>
+					</div> 
+				</li>
+				
+				<li class="shu"></li> 
+				<li class="shouji bj">
+					<a href="#">手机村头</a>
+					<i class="ci-right ">
+						<s class="jt">◇</s>
+					</i>
+					<div class="shouji1" style="width: 360px; height: 600px; left:-279px;">
+						<img src="/themes/b2b2cv2/images/home/ct918-buy.png" class="shouji4" style="width:130px; height: 130px;">
+						<div class="shouji2" style="top:30px; left:160px;">
+							<p>村头买家客户端</p>
+							<p class="red">欢迎下载!!!</p>
+							<img src="/themes/b2b2cv2/images/home/333.jpg" class="shouji3">
+							<img src="/themes/b2b2cv2/images/home/apple.png" class="shouji3">
+						</div> 
+						<div class="yi" style="width:100%;">
+							<img src="/themes/b2b2cv2/images/home/ct918-sell.png"class="shouji4" style="width:130px; height: 130px;">
+							<div class="er" style="top:170px; left:160px;">
+								<p>村头卖家客户端</p>
+								<p class="red">欢迎下载!!!</p>
+								<img src="/themes/b2b2cv2/images/home/333.jpg" class="shouji3">
+								<img src="/themes/b2b2cv2/images/home/apple.png" class="shouji3">
+							</div>
+						</div>
+						<!--货的 安卓/IOS端-->
+						<div class="yi" style="width:100%;">
+							<img src="/themes/b2b2cv2/images/home/cghdbuy_.png"class="shouji4" style="width:130px; height: 130px;">
+							<div class="er" style="top:320px; left:160px;">
+								<p>村哥货的用户客户端</p>
+								<p class="red">欢迎下载!!!</p>
+								<img src="/themes/b2b2cv2/images/home/333.jpg" class="shouji3">
+								<img src="/themes/b2b2cv2/images/home/apple.png" class="shouji3">
+							</div>
+						</div>
+						<div class="yi" style="width:100%;">
+							<img src="/themes/b2b2cv2/images/home/cghdsell_.png"class="shouji4" style="width:130px; height: 130px;">
+							<div class="er" style="top:470px; left:160px;">
+								<p>村哥货的司机客户端</p>
+								<p class="red">欢迎下载!!!</p>
+								<img src="/themes/b2b2cv2/images/home/333.jpg" class="shouji3">
+								<img src="/themes/b2b2cv2/images/home/apple.png" class="shouji3">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="shu"></li>
+				<li class="guanzhu bj">
+					<a href="#">关注村头</a>
+					<i class="ci-right ">
+						<s class="jt">◇</s>
+					</i>
+					<div class="guanzhu1" style="height:80px;"><img src="/themes/b2b2cv2/images/home/gzh.jpg" width="82" height="79"></div>
+				</li>
+				<li class="shu"></li>
+				<li class="kehu bj">
+					<a href="#">客户服务</a>
+					<i class="ci-right ">
+						<s class="jt">◇</s>
+					</i>
+					<div class="kehu1" style="height:100px;">
+						<h3 class="neirong2">客户</h3>
+						<ul class="kehu2">
+							<li><a href="/help-21-8.html">客服中心</a></li>
+							<li><a href="/help-23-16.html">售后服务</a></li>
+							<li><a href="/help-21-7.html">帮助中心</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="shu"></li>
+				 
+			</ul>
+		</div>
+	</header> 
+<div id="goodsSelectDiv"></div>﻿<!--  头部-->
+<!--   获取CMS数据搜索标签，-->
+<!--   获取CMS数据列表标签，-->
+
+<div class="w" style="margin-top: 10px;">
+	<div class="logo"><a href="/index.html"><img src="http://www.ct918.com/statics/attachment/spec/201608011429443096.png" /></a></div>
+	<div class="head_search" id="search" style="top: 0px; width: 550px; margin-top: 5px;">
+			<!--  商品和店铺-->
+			<ul class="tab">
+				<li
+						 class="current" 
+ act="search" title="按照商品查询"
+					search="goods">商品
+				</li>
+				<li 
+					 act="shop_search" title="按照店铺查询" search="store">店铺</li>
+			</ul>
+			<div class="search_form" style="padding: 1px 2px 2px 1px;">
+				<input name="namekeyword" id="namekeyword" type="text" class="input_text"
+				  value=长春   maxlength="60"/>
+				 <input type="button" id="inquiry" value="搜索" class="input_submit" />
+			</div>
+			<!--  搜索关键字-->
+			<div class="keyword">
+				热门搜索：
+				<ul>
+					<!--   调用CMS数据搜索标签，并传递所在模型ID参数(es_hot_keyword表.)“3”表示出现三个关键词-->
+					<li><a
+						href="http://www.ct918.com/goods_list.html?cat=2620">特产</a></li>
+					<li><a
+						href="http://www.ct918.com/goods_list.html?cat=2627">土货</a></li>
+					<li><a
+						href="http://www.ct918.com/goods_list.html?cat=2626">茶</a></li>
+					<li><a
+						href="goods_list.html?cat=1_1062_1541">水果</a></li>
+					<li><a
+						href="goods_list.html?keyword=蜂蜜">蜂蜜</a></li>
+				</ul>
+			</div>
+		</div>
+	
+	
+	<div class="head_menu">
+      
+      <dl class="my_cart">
+      	<div class="addcart_num"></div>
+        <dt><span class="ico"></span>我的购物车<i class="arrow"></i></dt>
+        <dd>
+          <div class="my_carttitle">
+            <h4>最新加入的商品</h4>
+          </div>
+          <div class="my_cartlist">
+           	<img class="loading" src="/themes/b2b2cv2/images/cartdd.gif" />
+          </div>
+        </dd>
+      </dl>
+    </div>
+	 
+</div>
+
+
+
+<div class="clear"></div>
+  <!--轮播图上方导航栏  一栏-->
+<div id="navv">
+	<div class="nav-img"></div>
+</div>
+ 
+
+<!-- 调用商品分类信息 -->
+<nav  class="index_nav" style="margin-top: 3px;">
+	<div class="wrapper">
+		<div class="allcategory" >
+			<div class="title" id="allcategory">
+				<h3>
+					<a href="javascript:void(0);">所有商品分类</a>
+				</h3>
+			</div>
+			<!--左侧菜单-->
+			<div id="category" class="category">
+				<ul class="menu">
+					<li class="odd" cat_id="1">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1">食品、土货</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="1" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2620" >特色农产品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2626">茶</a>
+														<a href="/goods_list.html?cat=2627">土货</a>
+														<a href="/goods_list.html?cat=2628">水果</a>
+														<a href="/goods_list.html?cat=2629">蔬菜</a>
+														<a href="/goods_list.html?cat=2630">家禽蛋类</a>
+														<a href="/goods_list.html?cat=2631">牲畜</a>
+														<a href="/goods_list.html?cat=2632">菌类</a>
+														<a href="/goods_list.html?cat=2633">海鲜制品</a>
+														<a href="/goods_list.html?cat=2634">调料</a>
+														<a href="/goods_list.html?cat=2635">干货</a>
+														<a href="/goods_list.html?cat=2636">精品装</a>
+														<a href="/goods_list.html?cat=2637">特色小吃</a>
+														<a href="/goods_list.html?cat=2638">特色餐饮</a>
+														<a href="/goods_list.html?cat=2639">鲜活定制</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1062" >生鲜果蔬<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1540">蔬菜类</a>
+														<a href="/goods_list.html?cat=1541">水果类</a>
+														<a href="/goods_list.html?cat=2140">坚果类</a>
+														<a href="/goods_list.html?cat=1063">肉禽类</a>
+														<a href="/goods_list.html?cat=1065">蛋类</a>
+														<a href="/goods_list.html?cat=1067">海鲜类</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=410" >粮油/干货<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=411">食用油</a>
+														<a href="/goods_list.html?cat=413">大米</a>
+														<a href="/goods_list.html?cat=414">杂粮/粗粮</a>
+														<a href="/goods_list.html?cat=415">面粉</a>
+														<a href="/goods_list.html?cat=1025">方便速食</a>
+														<a href="/goods_list.html?cat=416">菌菇干货</a>
+														<a href="/goods_list.html?cat=1034">腊肉腊味</a>
+														<a href="/goods_list.html?cat=1853">南北干货/特产</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1036" >调味品类<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2021">花椒/八角/桂皮</a>
+														<a href="/goods_list.html?cat=2042">辣椒调味</a>
+														<a href="/goods_list.html?cat=1037">食盐</a>
+														<a href="/goods_list.html?cat=1038">食糖</a>
+														<a href="/goods_list.html?cat=1039">鸡精/味精</a>
+														<a href="/goods_list.html?cat=1040">淀粉/生粉</a>
+														<a href="/goods_list.html?cat=1041">炖料/大料包</a>
+														<a href="/goods_list.html?cat=1042">调味粉</a>
+														<a href="/goods_list.html?cat=1043">芝麻</a>
+														<a href="/goods_list.html?cat=1044">醋</a>
+														<a href="/goods_list.html?cat=1045">酱油</a>
+														<a href="/goods_list.html?cat=1046">料酒/米酒</a>
+														<a href="/goods_list.html?cat=1047">调味酱</a>
+														<a href="/goods_list.html?cat=1048">调味油</a>
+														<a href="/goods_list.html?cat=1074">火锅底料/干锅/汤料</a>
+														<a href="/goods_list.html?cat=1075">豆腐乳</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=288" >茗茶/冲饮<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2402">普洱茶</a>
+														<a href="/goods_list.html?cat=292">绿茶</a>
+														<a href="/goods_list.html?cat=293">红茶</a>
+														<a href="/goods_list.html?cat=295">花草茶</a>
+														<a href="/goods_list.html?cat=296">黑茶</a>
+														<a href="/goods_list.html?cat=1013">果茶</a>
+														<a href="/goods_list.html?cat=1014">咖啡</a>
+														<a href="/goods_list.html?cat=2480">苦荞茶</a>
+														<a href="/goods_list.html?cat=2483">白茶</a>
+														<a href="/goods_list.html?cat=1015">红糖</a>
+														<a href="/goods_list.html?cat=1016">奶茶/麦片</a>
+														<a href="/goods_list.html?cat=2183">谷物粉</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=18" >美酒佳酿<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=20">啤酒</a>
+														<a href="/goods_list.html?cat=19">白酒</a>
+														<a href="/goods_list.html?cat=169">黄酒</a>
+														<a href="/goods_list.html?cat=168">葡萄酒</a>
+														<a href="/goods_list.html?cat=1017">调制果酒</a>
+														<a href="/goods_list.html?cat=2300">米酒</a>
+														<a href="/goods_list.html?cat=2380">其他酒类</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1068" >营养保健食品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1069">传统滋补/基础保健</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2" >休闲零食<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=6">面包/糕点</a>
+														<a href="/goods_list.html?cat=7">薯片/饼干/膨化</a>
+														<a href="/goods_list.html?cat=3">糖果</a>
+														<a href="/goods_list.html?cat=8">肉类零食</a>
+														<a href="/goods_list.html?cat=1008">坚果/炒货</a>
+														<a href="/goods_list.html?cat=1009">果脯/蜜饯</a>
+														<a href="/goods_list.html?cat=1010">豆制品</a>
+														<a href="/goods_list.html?cat=2720">冷饮/冰淇淋</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=13" >饮料<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=17">水</a>
+														<a href="/goods_list.html?cat=16">果味饮料</a>
+														<a href="/goods_list.html?cat=15">茶饮料</a>
+														<a href="/goods_list.html?cat=315">功能饮料</a>
+														<a href="/goods_list.html?cat=14">碳酸饮料</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=377" >牛奶乳品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=380">儿童奶</a>
+														<a href="/goods_list.html?cat=378">纯牛奶</a>
+														<a href="/goods_list.html?cat=379">酸奶</a>
+														<a href="/goods_list.html?cat=382">风味奶</a>
+														<a href="/goods_list.html?cat=381">豆奶</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="2">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=2678">旅游服务</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="2" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2621" >乡村民宿<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2640">宾馆酒店</a>
+														<a href="/goods_list.html?cat=2780">其它包房</a>
+														<a href="/goods_list.html?cat=2641">农家私宅</a>
+														<a href="/goods_list.html?cat=2642">农家乐</a>
+														<a href="/goods_list.html?cat=2643">住宿三件套</a>
+														<a href="/goods_list.html?cat=2644">蚊帐</a>
+														<a href="/goods_list.html?cat=2645">蚊香</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2622" >人在旅途<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2646">租车</a>
+														<a href="/goods_list.html?cat=2647">门票</a>
+														<a href="/goods_list.html?cat=2648">导游劵</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2623" >畅享乐游<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2649">自主导游</a>
+														<a href="/goods_list.html?cat=2650">民俗表演</a>
+														<a href="/goods_list.html?cat=2651">户外用品</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2625" >美丽乡村<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2659">美丽乡村</a>
+														<a href="/goods_list.html?cat=2660">特色小镇</a>
+														<a href="/goods_list.html?cat=2661">人文景观</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="odd" cat_id="3">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1255">家居、工艺品</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="3" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2683" >特色工艺品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2652">绣品</a>
+														<a href="/goods_list.html?cat=2653">织锦</a>
+														<a href="/goods_list.html?cat=2654">布艺类</a>
+														<a href="/goods_list.html?cat=2655">金属类</a>
+														<a href="/goods_list.html?cat=2656">工艺品</a>
+														<a href="/goods_list.html?cat=2657">手工定制</a>
+														<a href="/goods_list.html?cat=2658">陶瓷</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2078" >工艺品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2182">创意工艺品</a>
+														<a href="/goods_list.html?cat=2181">现代工艺品</a>
+														<a href="/goods_list.html?cat=2079">民族特色工艺品</a>
+														<a href="/goods_list.html?cat=1754">鲜花园艺</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1286" >家居饰品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1284">装饰画</a>
+														<a href="/goods_list.html?cat=1289">台钟/闹钟/挂钟</a>
+														<a href="/goods_list.html?cat=1700">装饰摆件</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1257" >布艺软饰<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1268">窗帘/配件</a>
+														<a href="/goods_list.html?cat=1269">桌布/茶席</a>
+														<a href="/goods_list.html?cat=1271">布艺饰品</a>
+														<a href="/goods_list.html?cat=1349">地毯/地垫</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1256" >家纺<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1259">床品套件</a>
+														<a href="/goods_list.html?cat=1262">保健枕</a>
+														<a href="/goods_list.html?cat=1263">抱枕/靠垫/异型枕</a>
+														<a href="/goods_list.html?cat=1261">蚊帐</a>
+														<a href="/goods_list.html?cat=1265">棉被</a>
+														<a href="/goods_list.html?cat=1264">空调被/夏凉被</a>
+														<a href="/goods_list.html?cat=1266">凉席</a>
+														<a href="/goods_list.html?cat=1267">绒毯</a>
+														<a href="/goods_list.html?cat=1270">毛巾</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1258" >时尚家具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1278">书柜书桌</a>
+														<a href="/goods_list.html?cat=1279">办公桌</a>
+														<a href="/goods_list.html?cat=1281">儿童房家具/套件</a>
+														<a href="/goods_list.html?cat=1274">电视柜</a>
+														<a href="/goods_list.html?cat=1273">茶几</a>
+														<a href="/goods_list.html?cat=1280">衣柜</a>
+														<a href="/goods_list.html?cat=1277">梳妆台</a>
+														<a href="/goods_list.html?cat=1276">床/床头柜</a>
+														<a href="/goods_list.html?cat=1272">沙发/套组</a>
+														<a href="/goods_list.html?cat=1275">餐桌套件</a>
+														<a href="/goods_list.html?cat=1282">储物柜</a>
+														<a href="/goods_list.html?cat=1283">凳子/椅子</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="4">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=56">母婴、玩具</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="4" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=57" >奶粉系列<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=58">1段奶粉</a>
+														<a href="/goods_list.html?cat=59">2段奶粉</a>
+														<a href="/goods_list.html?cat=60">3段奶粉</a>
+														<a href="/goods_list.html?cat=1108">4段奶粉</a>
+														<a href="/goods_list.html?cat=1109">5段奶粉</a>
+														<a href="/goods_list.html?cat=423">其它段奶粉</a>
+														<a href="/goods_list.html?cat=188">成人/儿童/特殊奶粉</a>
+														<a href="/goods_list.html?cat=61">孕妇奶粉</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=66" >辅食<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=67">米粉</a>
+														<a href="/goods_list.html?cat=70">饼干/磨牙棒</a>
+														<a href="/goods_list.html?cat=427">零食</a>
+														<a href="/goods_list.html?cat=68">婴儿果汁/果泥</a>
+														<a href="/goods_list.html?cat=69">面条</a>
+														<a href="/goods_list.html?cat=424">肉松</a>
+														<a href="/goods_list.html?cat=428">维生素/钙铁锌/DHA</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1117" >奶瓶/存储<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1118">奶瓶</a>
+														<a href="/goods_list.html?cat=1119">奶嘴</a>
+														<a href="/goods_list.html?cat=1120">奶瓶盖</a>
+														<a href="/goods_list.html?cat=1121">奶粉盒/储存器</a>
+														<a href="/goods_list.html?cat=1123">暖奶器</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1110" >儿童餐具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1113">碗盘/叉勺筷</a>
+														<a href="/goods_list.html?cat=1122">儿童水杯/水壶</a>
+														<a href="/goods_list.html?cat=1114">辅食剪</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1111" >儿童玩具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1116">牙胶安抚</a>
+														<a href="/goods_list.html?cat=1115">益智玩具</a>
+														<a href="/goods_list.html?cat=1843">早教机/点读学习</a>
+														<a href="/goods_list.html?cat=1844">早教图书</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=62" >防尿用品/湿巾<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=63">纸尿片/裤</a>
+														<a href="/goods_list.html?cat=65">尿布/尿垫</a>
+														<a href="/goods_list.html?cat=64">婴儿湿巾</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=191" >洗护用品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=192">宝宝护肤</a>
+														<a href="/goods_list.html?cat=193">宝宝洗浴</a>
+														<a href="/goods_list.html?cat=197">日常护理</a>
+														<a href="/goods_list.html?cat=194">理发器</a>
+														<a href="/goods_list.html?cat=196">奶瓶清洗/消毒</a>
+														<a href="/goods_list.html?cat=195">洗衣液/皂</a>
+														<a href="/goods_list.html?cat=199">驱蚊防蚊</a>
+														<a href="/goods_list.html?cat=72">澡盆/浴床</a>
+														<a href="/goods_list.html?cat=198">坐便器</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=212" >寝居服饰<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=214">婴儿内衣</a>
+														<a href="/goods_list.html?cat=213">婴儿外出服</a>
+														<a href="/goods_list.html?cat=215">婴儿礼盒</a>
+														<a href="/goods_list.html?cat=1601">女童服装</a>
+														<a href="/goods_list.html?cat=1602">男童服装</a>
+														<a href="/goods_list.html?cat=1603">女童鞋子</a>
+														<a href="/goods_list.html?cat=1165">男童鞋子</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=75" >纺织/用品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=76">床单/枕头</a>
+														<a href="/goods_list.html?cat=78">抱被</a>
+														<a href="/goods_list.html?cat=77">浴巾/毛巾</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=208" >安全座椅<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=210">安全座椅</a>
+														<a href="/goods_list.html?cat=209">提篮式</a>
+														<a href="/goods_list.html?cat=211">增高垫</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=200" >童车童床<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=202">婴儿推车</a>
+														<a href="/goods_list.html?cat=203">餐椅摇椅</a>
+														<a href="/goods_list.html?cat=201">婴儿床</a>
+														<a href="/goods_list.html?cat=204">学步车</a>
+														<a href="/goods_list.html?cat=206">扭扭车</a>
+														<a href="/goods_list.html?cat=207">滑板车</a>
+														<a href="/goods_list.html?cat=205">三轮车</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1112" >孕产妇用品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1845">孕妇装</a>
+														<a href="/goods_list.html?cat=1851">防辐射服</a>
+														<a href="/goods_list.html?cat=1847">哺乳文胸</a>
+														<a href="/goods_list.html?cat=1846">月子服</a>
+														<a href="/goods_list.html?cat=1850">束腹带</a>
+														<a href="/goods_list.html?cat=1852">孕妇枕</a>
+														<a href="/goods_list.html?cat=1848">待产用品</a>
+														<a href="/goods_list.html?cat=1849">孕妇洗护</a>
+														<a href="/goods_list.html?cat=1125">防溢乳垫</a>
+														<a href="/goods_list.html?cat=1124">吸奶器</a>
+														<a href="/goods_list.html?cat=1126">修复润肤</a>
+														<a href="/goods_list.html?cat=1127">产后调理食品</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="odd" cat_id="5">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=79">百货、清洁</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="5" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1097" >日杂百货<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2460">暖水袋/保暖贴/暖手宝</a>
+														<a href="/goods_list.html?cat=1480">节庆用品/礼品</a>
+														<a href="/goods_list.html?cat=1098">雨伞/雨具</a>
+														<a href="/goods_list.html?cat=1103">空气清新/香薰</a>
+														<a href="/goods_list.html?cat=1099">灭蚊虫/鼠害类产品</a>
+														<a href="/goods_list.html?cat=1106">休闲日用</a>
+														<a href="/goods_list.html?cat=1100">沐浴用品</a>
+														<a href="/goods_list.html?cat=1101">晾衣架/衣夹/叉</a>
+														<a href="/goods_list.html?cat=1102">挂钩</a>
+														<a href="/goods_list.html?cat=2520">PET壶/PET瓶</a>
+														<a href="/goods_list.html?cat=1104">盆子/水桶</a>
+														<a href="/goods_list.html?cat=1107">收纳整理</a>
+														<a href="/goods_list.html?cat=1523">缝纫编织用具</a>
+														<a href="/goods_list.html?cat=1525">打火机类</a>
+														<a href="/goods_list.html?cat=1526">烟具</a>
+														<a href="/goods_list.html?cat=2220">一次性用品</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=80" >厨房/烹饪用具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2040">烹饪工具</a>
+														<a href="/goods_list.html?cat=83">锅铲用具</a>
+														<a href="/goods_list.html?cat=82">水壶</a>
+														<a href="/goods_list.html?cat=217">厨用杂件</a>
+														<a href="/goods_list.html?cat=1942">厨房秤</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=135" >餐具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=137">碟/盘/碗</a>
+														<a href="/goods_list.html?cat=136">筷勺/刀叉</a>
+														<a href="/goods_list.html?cat=139">餐具套装</a>
+														<a href="/goods_list.html?cat=138">一次性餐具</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=124" >杯具/餐饮具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=125">水杯</a>
+														<a href="/goods_list.html?cat=132">茶具</a>
+														<a href="/goods_list.html?cat=134">咖啡具</a>
+														<a href="/goods_list.html?cat=127">酒具</a>
+														<a href="/goods_list.html?cat=1082">一次性杯子</a>
+														<a href="/goods_list.html?cat=1096">吸管/杯垫</a>
+														<a href="/goods_list.html?cat=2401">餐垫</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=219" >刀剪菜板<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=224">砧板/菜板</a>
+														<a href="/goods_list.html?cat=221">厨房用剪</a>
+														<a href="/goods_list.html?cat=220">单刀</a>
+														<a href="/goods_list.html?cat=222">套刀</a>
+														<a href="/goods_list.html?cat=223">刀具配件</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=225" >厨房收纳/保鲜<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=227">保鲜膜/袋</a>
+														<a href="/goods_list.html?cat=226">保鲜盒</a>
+														<a href="/goods_list.html?cat=229">饭盒/提锅</a>
+														<a href="/goods_list.html?cat=228">调料器皿</a>
+														<a href="/goods_list.html?cat=2221">筷笼</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=477" >清洁工具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=481">洗碗棉/百洁布</a>
+														<a href="/goods_list.html?cat=483">清洁刷</a>
+														<a href="/goods_list.html?cat=1527">棉签/棉棒</a>
+														<a href="/goods_list.html?cat=484">擦窗器</a>
+														<a href="/goods_list.html?cat=482">家务手套/围裙</a>
+														<a href="/goods_list.html?cat=487">垃圾袋</a>
+														<a href="/goods_list.html?cat=479">垃圾桶</a>
+														<a href="/goods_list.html?cat=478">地板清洁</a>
+														<a href="/goods_list.html?cat=1095">洁厕用具</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=469" >纸品湿巾<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=474">厨房用纸</a>
+														<a href="/goods_list.html?cat=475">湿巾纸</a>
+														<a href="/goods_list.html?cat=472">手帕纸</a>
+														<a href="/goods_list.html?cat=470">抽纸</a>
+														<a href="/goods_list.html?cat=471">卷筒纸</a>
+														<a href="/goods_list.html?cat=473">平板卫生纸</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1083" >洗涤护理<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1088">洗洁精</a>
+														<a href="/goods_list.html?cat=1089">厨房清洁液</a>
+														<a href="/goods_list.html?cat=1579">玻璃水</a>
+														<a href="/goods_list.html?cat=1092">洗手液</a>
+														<a href="/goods_list.html?cat=1084">洗衣液/洗衣片</a>
+														<a href="/goods_list.html?cat=1085">洗衣粉</a>
+														<a href="/goods_list.html?cat=1086">肥皂</a>
+														<a href="/goods_list.html?cat=1087">漂白水/消毒液</a>
+														<a href="/goods_list.html?cat=1091">眼镜护理液</a>
+														<a href="/goods_list.html?cat=1090">皮革护理剂</a>
+														<a href="/goods_list.html?cat=1094">洁厕剂</a>
+														<a href="/goods_list.html?cat=2211">洗涤套装</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="6">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=86">服鞋饰品</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="6" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=96" >女装<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2208">长袖</a>
+														<a href="/goods_list.html?cat=2202">T恤</a>
+														<a href="/goods_list.html?cat=97">连衣裙</a>
+														<a href="/goods_list.html?cat=1172">半身裙</a>
+														<a href="/goods_list.html?cat=100">蕾丝/雪纺衫</a>
+														<a href="/goods_list.html?cat=273">吊带/背心</a>
+														<a href="/goods_list.html?cat=98">针织衫</a>
+														<a href="/goods_list.html?cat=101">衬衫</a>
+														<a href="/goods_list.html?cat=99">短裤</a>
+														<a href="/goods_list.html?cat=274">外套</a>
+														<a href="/goods_list.html?cat=272">牛仔裤</a>
+														<a href="/goods_list.html?cat=1461">打底裤</a>
+														<a href="/goods_list.html?cat=2201">羽绒服</a>
+														<a href="/goods_list.html?cat=2481">保暖内衣</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=116" >服装配饰<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2077">民族风首饰</a>
+														<a href="/goods_list.html?cat=285">潮流首饰</a>
+														<a href="/goods_list.html?cat=1166">女士头饰/帽子</a>
+														<a href="/goods_list.html?cat=1167">男士帽子</a>
+														<a href="/goods_list.html?cat=1173">口罩</a>
+														<a href="/goods_list.html?cat=118">眼镜/配件</a>
+														<a href="/goods_list.html?cat=117">女士丝巾/围巾/披巾</a>
+														<a href="/goods_list.html?cat=121">女士腰带/礼盒</a>
+														<a href="/goods_list.html?cat=120">领带/领结/领带夹</a>
+														<a href="/goods_list.html?cat=119">男士丝巾/围巾</a>
+														<a href="/goods_list.html?cat=283">袖套</a>
+														<a href="/goods_list.html?cat=284">手套</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1168" >女袜<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1459">船袜</a>
+														<a href="/goods_list.html?cat=1457">丝袜</a>
+														<a href="/goods_list.html?cat=1458">棉袜</a>
+														<a href="/goods_list.html?cat=1460">连裤袜</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=108" >女鞋<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=111">舒适平底鞋</a>
+														<a href="/goods_list.html?cat=1661">优雅中跟鞋</a>
+														<a href="/goods_list.html?cat=112">气质高跟鞋</a>
+														<a href="/goods_list.html?cat=281">内增高</a>
+														<a href="/goods_list.html?cat=110">凉鞋</a>
+														<a href="/goods_list.html?cat=280">拖鞋/人字拖</a>
+														<a href="/goods_list.html?cat=279">运动休闲鞋</a>
+														<a href="/goods_list.html?cat=1662">靴子</a>
+														<a href="/goods_list.html?cat=1580">棉鞋</a>
+														<a href="/goods_list.html?cat=282">妈妈鞋</a>
+														<a href="/goods_list.html?cat=1170">鞋配件</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=455" >文胸/塑身/内裤<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=456">文胸</a>
+														<a href="/goods_list.html?cat=461">女式内裤</a>
+														<a href="/goods_list.html?cat=467">收腹裤</a>
+														<a href="/goods_list.html?cat=468">抹胸</a>
+														<a href="/goods_list.html?cat=466">美体塑身衣</a>
+														<a href="/goods_list.html?cat=462">男士内裤</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=91" >男装<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=103">T恤</a>
+														<a href="/goods_list.html?cat=104">针织衫</a>
+														<a href="/goods_list.html?cat=102">衬衫</a>
+														<a href="/goods_list.html?cat=276">西服</a>
+														<a href="/goods_list.html?cat=275">POLO衫</a>
+														<a href="/goods_list.html?cat=106">卫衣</a>
+														<a href="/goods_list.html?cat=107">夹克</a>
+														<a href="/goods_list.html?cat=2482">保暖内衣</a>
+														<a href="/goods_list.html?cat=105">羊绒衫</a>
+														<a href="/goods_list.html?cat=2200">羽绒服</a>
+														<a href="/goods_list.html?cat=2800">外套</a>
+														<a href="/goods_list.html?cat=92">短裤</a>
+														<a href="/goods_list.html?cat=94">长裤</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1169" >男袜<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1462">船袜</a>
+														<a href="/goods_list.html?cat=1463">短棉袜</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=109" >男鞋<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1164">皮鞋</a>
+														<a href="/goods_list.html?cat=113">休闲鞋</a>
+														<a href="/goods_list.html?cat=278">运动鞋</a>
+														<a href="/goods_list.html?cat=1600">凉鞋/拖鞋/人字拖</a>
+														<a href="/goods_list.html?cat=277">雨鞋/雨靴</a>
+														<a href="/goods_list.html?cat=1581">棉鞋</a>
+														<a href="/goods_list.html?cat=1171">鞋配件</a>
+														<a href="/goods_list.html?cat=2076">草鞋</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=36" >潮流女包<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=37">单肩包</a>
+														<a href="/goods_list.html?cat=143">贝壳包</a>
+														<a href="/goods_list.html?cat=140">手拎包</a>
+														<a href="/goods_list.html?cat=150">钱包/卡包</a>
+														<a href="/goods_list.html?cat=1664">女背包</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=144" >时尚男包<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=231">男士手包</a>
+														<a href="/goods_list.html?cat=145">商务包</a>
+														<a href="/goods_list.html?cat=149">钱包/卡包</a>
+														<a href="/goods_list.html?cat=146">休闲包</a>
+														<a href="/goods_list.html?cat=148">真皮包</a>
+														<a href="/goods_list.html?cat=147">帆布包</a>
+														<a href="/goods_list.html?cat=141">双肩包</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=151" >功能箱包<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=236">书包</a>
+														<a href="/goods_list.html?cat=232">电脑包</a>
+														<a href="/goods_list.html?cat=233">相机包</a>
+														<a href="/goods_list.html?cat=234">腰包/胸包</a>
+														<a href="/goods_list.html?cat=235">登山包</a>
+														<a href="/goods_list.html?cat=152">拉杆箱/拉杆包</a>
+														<a href="/goods_list.html?cat=1285">钥匙包/扣</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=155" >珠宝首饰<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1178">珍珠</a>
+														<a href="/goods_list.html?cat=156">钻石/钻戒</a>
+														<a href="/goods_list.html?cat=159">黄铂金</a>
+														<a href="/goods_list.html?cat=286">纯K金饰品</a>
+														<a href="/goods_list.html?cat=157">翡翠/玉石</a>
+														<a href="/goods_list.html?cat=1660">琥珀蜜蜡</a>
+														<a href="/goods_list.html?cat=438">彩色宝石</a>
+														<a href="/goods_list.html?cat=1665">银饰</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=160" >手表/名表<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=166">情侣对表</a>
+														<a href="/goods_list.html?cat=164">女士手表</a>
+														<a href="/goods_list.html?cat=163">男士手表</a>
+														<a href="/goods_list.html?cat=165">中性手表</a>
+														<a href="/goods_list.html?cat=167">儿童手表</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="odd" cat_id="7">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=38">美妆、护理</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="7" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=39" >面部护肤<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=383">套装</a>
+														<a href="/goods_list.html?cat=40">洁面</a>
+														<a href="/goods_list.html?cat=41">柔肤水/爽肤水</a>
+														<a href="/goods_list.html?cat=387">精华</a>
+														<a href="/goods_list.html?cat=42">乳液</a>
+														<a href="/goods_list.html?cat=386">面霜</a>
+														<a href="/goods_list.html?cat=388">美白</a>
+														<a href="/goods_list.html?cat=389">防晒</a>
+														<a href="/goods_list.html?cat=390">卸妆</a>
+														<a href="/goods_list.html?cat=384">面膜</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=43" >眼部保养<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=44">眼部精华</a>
+														<a href="/goods_list.html?cat=45">眼霜</a>
+														<a href="/goods_list.html?cat=46">眼膜</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=171" >口腔护理<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=173">牙刷/牙线</a>
+														<a href="/goods_list.html?cat=399">电动牙刷</a>
+														<a href="/goods_list.html?cat=172">牙膏/牙粉</a>
+														<a href="/goods_list.html?cat=398">儿童口腔护理</a>
+														<a href="/goods_list.html?cat=174">漱口水</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=51" >洗发护发<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=52">洗发水</a>
+														<a href="/goods_list.html?cat=392">护发素</a>
+														<a href="/goods_list.html?cat=1076">发膜</a>
+														<a href="/goods_list.html?cat=1077">啫喱</a>
+														<a href="/goods_list.html?cat=1078">弹力素</a>
+														<a href="/goods_list.html?cat=1079">发胶</a>
+														<a href="/goods_list.html?cat=1080">染发用品</a>
+														<a href="/goods_list.html?cat=393">旅行装</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=400" >彩妆/香氛/美容工具/精油<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=405">粉底</a>
+														<a href="/goods_list.html?cat=403">隔离</a>
+														<a href="/goods_list.html?cat=402">BB霜/CC霜</a>
+														<a href="/goods_list.html?cat=404">腮红</a>
+														<a href="/goods_list.html?cat=406">眼部</a>
+														<a href="/goods_list.html?cat=407">睫毛膏</a>
+														<a href="/goods_list.html?cat=409">唇膏/口红</a>
+														<a href="/goods_list.html?cat=408">美甲</a>
+														<a href="/goods_list.html?cat=418">美容工具</a>
+														<a href="/goods_list.html?cat=419">女士香水/走珠</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=175" >身体护理<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=178">颈部</a>
+														<a href="/goods_list.html?cat=181">美胸</a>
+														<a href="/goods_list.html?cat=1576">沐浴用品</a>
+														<a href="/goods_list.html?cat=177">润肤</a>
+														<a href="/goods_list.html?cat=180">纤体塑形</a>
+														<a href="/goods_list.html?cat=1081">手部</a>
+														<a href="/goods_list.html?cat=179">足部</a>
+														<a href="/goods_list.html?cat=1093">花露水</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=47" >男士护理<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=48">男士洁面</a>
+														<a href="/goods_list.html?cat=49">男士护肤</a>
+														<a href="/goods_list.html?cat=396">护理套装</a>
+														<a href="/goods_list.html?cat=397">男士香水</a>
+														<a href="/goods_list.html?cat=50">剃须护理</a>
+														<a href="/goods_list.html?cat=394">身体护理</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="8">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1179">数码电器</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="8" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1180" >大家电<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1185">饮水机</a>
+														<a href="/goods_list.html?cat=1186">净水机</a>
+														<a href="/goods_list.html?cat=1188">微波炉</a>
+														<a href="/goods_list.html?cat=1915">电烤箱</a>
+														<a href="/goods_list.html?cat=1189">消毒柜</a>
+														<a href="/goods_list.html?cat=1194">抽油烟机</a>
+														<a href="/goods_list.html?cat=1195">集成灶</a>
+														<a href="/goods_list.html?cat=1193">电热水器</a>
+														<a href="/goods_list.html?cat=1191">电冰箱/冰柜/展示柜</a>
+														<a href="/goods_list.html?cat=1192">洗衣机/脱水机</a>
+														<a href="/goods_list.html?cat=1916">空调</a>
+														<a href="/goods_list.html?cat=1187">电视机</a>
+														<a href="/goods_list.html?cat=1190">烘干机</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1917" >厨房小电器<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1207">豆浆机</a>
+														<a href="/goods_list.html?cat=1918">电蒸锅</a>
+														<a href="/goods_list.html?cat=1204">电煎锅煮蛋器</a>
+														<a href="/goods_list.html?cat=1913">面包机</a>
+														<a href="/goods_list.html?cat=1919">电饼铛</a>
+														<a href="/goods_list.html?cat=1205">电动打蛋器</a>
+														<a href="/goods_list.html?cat=1211">搅拌机/料理机</a>
+														<a href="/goods_list.html?cat=1203">电热锅/电饭煲/电压力锅</a>
+														<a href="/goods_list.html?cat=1924">炒菜机</a>
+														<a href="/goods_list.html?cat=1920">电火锅</a>
+														<a href="/goods_list.html?cat=1921">酸奶机</a>
+														<a href="/goods_list.html?cat=1206">电磁炉/电陶炉</a>
+														<a href="/goods_list.html?cat=1202">电热水壶/电热棒</a>
+														<a href="/goods_list.html?cat=1922">电热饭盒</a>
+														<a href="/goods_list.html?cat=1923">面条机</a>
+														<a href="/goods_list.html?cat=1925">电烧烤炉</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1907" >特色家电/商用厨电<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1908">豆芽机</a>
+														<a href="/goods_list.html?cat=1909">冰淇淋机</a>
+														<a href="/goods_list.html?cat=1910">榨油机</a>
+														<a href="/goods_list.html?cat=1911">爆米花机</a>
+														<a href="/goods_list.html?cat=1912">空气炸锅</a>
+														<a href="/goods_list.html?cat=1914">咖啡机</a>
+														<a href="/goods_list.html?cat=1926">棉花糖机</a>
+														<a href="/goods_list.html?cat=1927">烤肠机</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1928" >居家小电器<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1929">空气净化器</a>
+														<a href="/goods_list.html?cat=1930">吸尘器</a>
+														<a href="/goods_list.html?cat=1931">扫地机</a>
+														<a href="/goods_list.html?cat=1932">蒸汽拖把</a>
+														<a href="/goods_list.html?cat=1215">挂烫机/电熨斗</a>
+														<a href="/goods_list.html?cat=1199">电风扇</a>
+														<a href="/goods_list.html?cat=1933">空调扇</a>
+														<a href="/goods_list.html?cat=1198">加湿器</a>
+														<a href="/goods_list.html?cat=1208">取暖器</a>
+														<a href="/goods_list.html?cat=1934">抽湿器/除湿机</a>
+														<a href="/goods_list.html?cat=1201">电子灭蚊器</a>
+														<a href="/goods_list.html?cat=1935">电热毯</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1181" >个护小电器<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1214">卷直发器</a>
+														<a href="/goods_list.html?cat=1212">理发器</a>
+														<a href="/goods_list.html?cat=1209">电吹风</a>
+														<a href="/goods_list.html?cat=1936">美发工具</a>
+														<a href="/goods_list.html?cat=1210">电动牙刷</a>
+														<a href="/goods_list.html?cat=1937">蒸脸器</a>
+														<a href="/goods_list.html?cat=1196">洁面美容仪</a>
+														<a href="/goods_list.html?cat=1938">冲牙器</a>
+														<a href="/goods_list.html?cat=1939">电动鼻毛修剪器</a>
+														<a href="/goods_list.html?cat=1940">电动美甲器</a>
+														<a href="/goods_list.html?cat=1941">剃毛器</a>
+														<a href="/goods_list.html?cat=1200">毛球修剪器</a>
+														<a href="/goods_list.html?cat=1213">体重秤</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1182" >3C数码、周边/配件<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1216">电脑</a>
+														<a href="/goods_list.html?cat=1229">鼠标/键盘</a>
+														<a href="/goods_list.html?cat=1230">鼠标垫</a>
+														<a href="/goods_list.html?cat=1231">路由器</a>
+														<a href="/goods_list.html?cat=1228">摄像头</a>
+														<a href="/goods_list.html?cat=1224">音箱/耳机</a>
+														<a href="/goods_list.html?cat=1221">手机支架</a>
+														<a href="/goods_list.html?cat=1222">自拍杆</a>
+														<a href="/goods_list.html?cat=1223">手机壳/贴膜</a>
+														<a href="/goods_list.html?cat=1220">充电/电源/线</a>
+														<a href="/goods_list.html?cat=1226">读卡器</a>
+														<a href="/goods_list.html?cat=1227">U盘</a>
+														<a href="/goods_list.html?cat=1225">内存卡</a>
+														<a href="/goods_list.html?cat=1233">相机</a>
+														<a href="/goods_list.html?cat=1232">录音笔</a>
+														<a href="/goods_list.html?cat=1235">电池</a>
+														<a href="/goods_list.html?cat=1234">USB灯</a>
+														<a href="/goods_list.html?cat=2760">电子元器件</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1184" >电话手机<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1236">智能手机</a>
+														<a href="/goods_list.html?cat=1237">老人手机</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="odd" cat_id="9">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=2681">视图服务</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="9" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2682" >图片制作<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2684">图片设计制作</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2685" >策划/广告<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2692">商务策划</a>
+														<a href="/goods_list.html?cat=2693">广告服务</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2687" >活动服务<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2688">活动服务</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2689" >视频制作<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2690">视频制作</a>
+														<a href="/goods_list.html?cat=2691">视频拍摄</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="10">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1129">文化用品</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="10" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1130" >书写工具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1134">圆珠笔/中性笔</a>
+														<a href="/goods_list.html?cat=1135">替芯/铅芯</a>
+														<a href="/goods_list.html?cat=1136">钢笔/墨水</a>
+														<a href="/goods_list.html?cat=1137">铅笔/蜡笔</a>
+														<a href="/goods_list.html?cat=1138">水彩笔/水性笔</a>
+														<a href="/goods_list.html?cat=1139">荧光笔/水粉笔</a>
+														<a href="/goods_list.html?cat=1140">毛笔</a>
+														<a href="/goods_list.html?cat=1905">文房四宝/套装</a>
+														<a href="/goods_list.html?cat=1906">水彩颜料</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1131" >纸类本册<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1142">作业本</a>
+														<a href="/goods_list.html?cat=1143">日记本/笔记本</a>
+														<a href="/goods_list.html?cat=1144">日程本/计划本</a>
+														<a href="/goods_list.html?cat=1145">便签贴/便利贴</a>
+														<a href="/goods_list.html?cat=1146">空白本/同学录</a>
+														<a href="/goods_list.html?cat=1147">记账本</a>
+														<a href="/goods_list.html?cat=1148">明信片/卡片/书签/信纸</a>
+														<a href="/goods_list.html?cat=1149">凭证/单据</a>
+														<a href="/goods_list.html?cat=1150">打印纸</a>
+														<a href="/goods_list.html?cat=1151">复写纸</a>
+														<a href="/goods_list.html?cat=1152">手工纸/卡纸</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1132" >创意文具<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1153">笔袋/文具盒/笔筒</a>
+														<a href="/goods_list.html?cat=1154">尺具/计算器</a>
+														<a href="/goods_list.html?cat=1155">橡皮/涂改工具</a>
+														<a href="/goods_list.html?cat=1156">削笔器</a>
+														<a href="/goods_list.html?cat=1157">画写板/黑板</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1133" >办公用具/收纳<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1158">装订工具</a>
+														<a href="/goods_list.html?cat=1159">票夹/书夹/夹子</a>
+														<a href="/goods_list.html?cat=1161">文件袋夹/收纳架</a>
+														<a href="/goods_list.html?cat=1162">胶水/胶棒</a>
+														<a href="/goods_list.html?cat=1163">印章/印泥</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1880" >办公电器设备<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1881">打印/复印机</a>
+														<a href="/goods_list.html?cat=1882">投影仪</a>
+														<a href="/goods_list.html?cat=1888">扫描仪</a>
+														<a href="/goods_list.html?cat=1884">电话机/传真机</a>
+														<a href="/goods_list.html?cat=1889">考勤门禁</a>
+														<a href="/goods_list.html?cat=1886">验钞机/点钞机</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=2500" >书籍<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=2501">少儿书籍</a>
+														<a href="/goods_list.html?cat=2502">教材类</a>
+														<a href="/goods_list.html?cat=2503">文艺类</a>
+														<a href="/goods_list.html?cat=2504">经管励志类</a>
+														<a href="/goods_list.html?cat=2505">人文社科类</a>
+														<a href="/goods_list.html?cat=2506">生活类</a>
+														<a href="/goods_list.html?cat=2507">科技类</a>
+														<a href="/goods_list.html?cat=2508">杂志/期刊/报纸</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1895" >办公耗材<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1896">碳粉</a>
+														<a href="/goods_list.html?cat=1897">墨盒</a>
+														<a href="/goods_list.html?cat=1898">色带</a>
+														<a href="/goods_list.html?cat=1899">幕布</a>
+														<a href="/goods_list.html?cat=1900">油墨</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1890" >电子教育<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1891">电子书</a>
+														<a href="/goods_list.html?cat=1892">电子辞典</a>
+														<a href="/goods_list.html?cat=1894">学生平板</a>
+														<a href="/goods_list.html?cat=1893">点读机</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1901" >包装设备<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1902">塑封机/真空机/封口机</a>
+														<a href="/goods_list.html?cat=1903">打码机</a>
+														<a href="/goods_list.html?cat=1160">贴纸/胶带</a>
+														<a href="/goods_list.html?cat=2700">包装用品</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="odd" cat_id="11">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1701">汽车用品</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="11" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1703" >汽车装饰<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1704">座垫/脚垫/后备箱垫</a>
+														<a href="/goods_list.html?cat=1709">精品内饰</a>
+														<a href="/goods_list.html?cat=1705">汽车香水</a>
+														<a href="/goods_list.html?cat=1288">车挂件</a>
+														<a href="/goods_list.html?cat=1707">汽车贴膜</a>
+														<a href="/goods_list.html?cat=2740">汽车外饰/车蓬</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1714" >电子导航<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1708">行车导航</a>
+														<a href="/goods_list.html?cat=1713">记录仪</a>
+														<a href="/goods_list.html?cat=1711">安全预警</a>
+														<a href="/goods_list.html?cat=1710">影音娱乐</a>
+														<a href="/goods_list.html?cat=1712">车载电器</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1715" >汽车配件<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1716">轮胎</a>
+														<a href="/goods_list.html?cat=1719">车灯</a>
+														<a href="/goods_list.html?cat=1718">雨刮器</a>
+														<a href="/goods_list.html?cat=1720">刹车盘片</a>
+														<a href="/goods_list.html?cat=1717">机油</a>
+														<a href="/goods_list.html?cat=1722">蓄电池</a>
+														<a href="/goods_list.html?cat=1721">滤芯器</a>
+														<a href="/goods_list.html?cat=1723">火花塞</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1724" >美容保养<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1725">美容养护</a>
+														<a href="/goods_list.html?cat=1726">维修工具</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					<li class="even" cat_id="12">
+						<div class="class">
+							<h4>
+								<a href="/goods_list.html?cat=1296">运动户外、娱乐</a>
+							</h4>
+							 <i>></i>
+						</div> 
+							<div class="sub_classify" cat_menu_id="12" style="min-height: 478px; border-top: none;">
+								<div class="sub-lefty" style="width:970px"> 
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1332" >运动健身<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1750">足球</a>
+														<a href="/goods_list.html?cat=1751">篮球</a>
+														<a href="/goods_list.html?cat=1334">羽毛球/拍</a>
+														<a href="/goods_list.html?cat=1335">乒乓球/拍</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1732" >游泳/潜水<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1733">游泳衣</a>
+														<a href="/goods_list.html?cat=1739">潜水服</a>
+														<a href="/goods_list.html?cat=1737">泳帽</a>
+														<a href="/goods_list.html?cat=1734">泳镜</a>
+														<a href="/goods_list.html?cat=1738">手/脚蹼</a>
+														<a href="/goods_list.html?cat=1736">游泳圈/充气床</a>
+														<a href="/goods_list.html?cat=1735">游泳浮板</a>
+														<a href="/goods_list.html?cat=1741">潜水气瓶</a>
+														<a href="/goods_list.html?cat=1740">呼吸管</a>
+														<a href="/goods_list.html?cat=1742">潜水仪表</a>
+														<a href="/goods_list.html?cat=1743">其它游泳潜水装备</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1333" >户外用品<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1807">帐篷/睡袋</a>
+														<a href="/goods_list.html?cat=1809">烧烤架用具</a>
+														<a href="/goods_list.html?cat=1810">望远镜</a>
+														<a href="/goods_list.html?cat=1808">营地灯</a>
+														<a href="/goods_list.html?cat=1337">垂钓渔具</a>
+														<a href="/goods_list.html?cat=1297">手电筒</a>
+														<a href="/goods_list.html?cat=1520">野餐垫</a>
+												</dd>
+										</dl>
+										<dl class="fore1">
+											<dt><a href="/goods_list.html?cat=1744" >棋牌娱乐<i>></i></a></dt>
+												<dd style="width:880px;">
+														<a href="/goods_list.html?cat=1105">围棋</a>
+														<a href="/goods_list.html?cat=1745">象棋</a>
+														<a href="/goods_list.html?cat=1746">跳棋</a>
+														<a href="/goods_list.html?cat=1747">五子棋</a>
+														<a href="/goods_list.html?cat=1748">其它棋游戏</a>
+														<a href="/goods_list.html?cat=1749">麻将/麻将机类</a>
+														<a href="/goods_list.html?cat=1339">扑克牌类</a>
+												</dd>
+										</dl>
+								</div>  
+							</div> 
+					</li> 
+					
+					<div class="clear"></div>
+				</ul>
+			</div>
+		</div>
+		<!--分类树结束-->
+<!-- 创建菜单标签 -->
+<!-- 调用菜单信息 -->
+<ul class="site_menu">
+		<li class="first" >
+			<a href="/index.html" target="">商城首页</a>	 
+		</li>
+		<li class="" >
+			<a href="http://www.ct918.com/home.html?show_c=1&store_id=1&menu=stor" target="_blank">平台自营</a>	 
+		</li>
+		<li class="" >
+			<a href="/goods_marketday.html" target="_blank">土货商城</a>	 
+		</li>
+		<li class="" >
+			<a href="/home.html?show_c=1&store_id=1439" target="_blank">民宿旅游</a>	 
+		</li>
+		<li class="" >
+			<a href="/area_index.html" target="_blank">县域商城</a>	 
+		</li>
+		<li class="" >
+			<a href="http://www.ct918.com/pb/index.html" target="_blank">村头公益</a>	 
+		</li>
+		<li class="last" >
+			<a href="http://www.ct918.com/goods_list.html?tag_id=93136&search=goo" target="_blank">电商精准扶贫</a>	 
+		</li>
+</ul>
+<script>
+	$(function(){
+		//鼠标移入显示
+		$(".site_menu li").mouseover(function(){
+			$(this).find(".child").show();
+		})
+		
+		//鼠标移出隐藏
+		$(".site_menu li").mouseleave(function(){
+			$(this).find(".child").hide();
+		})
+	})
+</script>
+
+	</div>
+</nav>
+ 
+
+ 
+<script type="text/javascript">
+	var goodsSearchTxt = '请输入您要搜索的商品关键字';
+	var storeSearchTxt = '请输入您要搜索的店铺关键字';
+	$(function() {
+	//	$('.my_cartlist').perfectScrollbar();
+		CartBar.init();
+		
+		$("#inquiry").click(function() {
+			var search = $("#search li[class='current']").attr(
+					"search");
+			if ($("#namekeyword").val() == goodsSearchTxt && search == "goods") {
+				alert(goodsSearchTxt);
+			} else if ($("#namekeyword").val() == storeSearchTxt && search == "store") {
+				alert(storeSearchTxt);
+			} else if (!$("#namekeyword").val() == "" && search == "goods") {
+				location.href = ctx
+						+ "/goods_list.html?keyword="
+						+ $("#namekeyword").val() + "&search="
+						+ search;
+			} else if (!$("#namekeyword").val() == ""
+					&& search == "store") {
+				location.href = ctx
+						+ "/store_list.html?keyword="
+						+ $("#namekeyword").val() + "&search="
+						+ search+"&searchType=default";
+			}
+		});
+		
+		$(document).keyup(function(event){
+			//判断是否失去焦点
+			var isFocus=$("#namekeyword").is(":focus");  
+			if(event.keyCode ==13 && true==isFocus){
+				  var search = $("#search li[class='current']").attr("search");
+				if ($("#namekeyword").val() == goodsSearchTxt && search == "goods") {
+					alert(goodsSearchTxt);
+				} else if ($("#namekeyword").val() == storeSearchTxt && search == "store") {
+					alert(storeSearchTxt);
+				} else if (!$("#namekeyword").val() == "" && search == "goods") {
+					location.href = ctx + "/goods_list.html?keyword="
+							+ $("#namekeyword").val() + "&search="
+							+ search;
+				} else if (!$("#namekeyword").val() == "" && search == "store") {
+					location.href = ctx + "/store_list.html?keyword="
+							+ $("#namekeyword").val() + "&search="
+							+ search+"&searchType=default";
+				}
+			  }
+			});
+		
+		
+		
+		
+		$("#namekeyword").blur(function() {
+			if ($("#namekeyword").val() == "") {
+				var search = $("#search li[class='current']").attr("search");
+				if (search == "goods")
+					$("#namekeyword").val(goodsSearchTxt);
+				else if (search == "store")
+					$("#namekeyword").val(storeSearchTxt);
+			}
+		});
+		$("#namekeyword").focus(function() {
+			var search = $("#search li[class='current']")
+					.attr("search");
+			var searchTxt = "";
+			if (search == "goods"
+					&& $("#namekeyword").val() == goodsSearchTxt) {
+				$("#namekeyword").val("");
+			} else if (search == "store"
+					&& $("#namekeyword").val() == storeSearchTxt) {
+				$("#namekeyword").val("");
+			}
+		});
+		$("#search .tab li").click(function() {
+			var search = $(this).attr("search");
+			if (search == "goods") {
+				$("#namekeyword").val(goodsSearchTxt);
+				$("#search li[search='goods']").addClass("current");
+				$("#search li[search='store']").removeClass("current");
+			} else {
+				$("#namekeyword").val(storeSearchTxt);
+				$("#search li[search='store']").addClass("current");
+				$("#search li[search='goods']").removeClass("current");
+			}
+		});
+		
+		
+	});
+</script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/themes/b2b2cv2/css/goods_list.css" />
+
+<script src="/themes/b2b2cv2/js/jquery.raty.min.js" ></script>
+<script src="/themes/b2b2cv2/js/waypoints.js"></script>
+<script src="/themes/b2b2cv2/js/search_category_menu.js"></script>
+<script src="/themes/b2b2cv2/js/search_goods.js" ></script>
+<script src="/themes/b2b2cv2/js/class_area_array.js" ></script>
+<script src="/themes/b2b2cv2/js/jquery.datalazyload.js" ></script>
+
+
+
+
+
+
+<!-- 加入购物车效果 
+<style>
+#box {
+	background: #FFF;
+	width: 238px;
+	height: 410px;
+	margin: -390px 0 0 0;
+	display: block;
+	border: solid 4px #D93600;
+	position: absolute;
+	z-index: 999;
+	opacity: .5
+}
+.shopMenu {
+	position: fixed;
+	z-index: 1;
+	right: 25%;
+	top: 0;
+}
+</style>
+-->
+<div class="clear"></div>
+<div class="goodslist_nav">
+	<div class="breadcrumb wrapper" style="border: none;">
+    	<span>
+    		<a href="index.html">首页</a>
+    	</span>
+    	<span class="arrow">&gt;</span>
+    	<span>搜索结果</span>
+    	<span class="arrow">&gt;</span>
+		
+		
+		<div class="goods_selected_all">
+			
+		</div>
+	</div>
+</div>
+<div style="width:1200px;height:1px;margin:0px auto;clear:both;"></div>
+<div class="goods_clear"></div>
+<!-- 新版检索html -->
+<div class="goodssearch_new">
+<!-- 已选择 -->
+	<table class="wait_select">
+		<tr>
+			<th>按品牌：</th>
+			<td>
+				<ul class="brand_goods_search">
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1024" ><span style="display:none;">力士</span><img src="http://222.180.164.21/statics/attachment/brand/201607052213458544.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1035" ><span style="display:none;">百雀羚</span><img src="http://222.180.164.21/statics/attachment/brand/201607041110360232.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1038" ><span style="display:none;">六个核桃</span><img src="http://222.180.164.21/statics/attachment/brand/201607052159446637.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1039" ><span style="display:none;">珀微面膜</span><img src="http://222.180.164.21/statics/attachment/brand/201607052217226818.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1040" ><span style="display:none;">达利园</span><img src="http://222.180.164.21/statics/attachment/brand/201607041115303744.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1063" ><span style="display:none;">长城干红</span><img src="http://222.180.164.21/statics/attachment/brand/201607052202551794.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1068" ><span style="display:none;">中华健齿白</span><img src="http://222.180.164.21/statics/attachment/brand/201607041412129611.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1075" ><span style="display:none;">沙宣</span><img src="http://222.180.164.21/statics/attachment/brand/201607041420133031.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1076" ><span style="display:none;">一桶天下</span><img src="http://222.180.164.21/statics/attachment/brand/201607041420263600.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1082" ><span style="display:none;">高露洁</span><img src="http://222.180.164.21/statics/attachment/brand/201607052216171495.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1099" ><span style="display:none;">保宁</span><img src="http://222.180.164.21/statics/attachment/brand/201607041459510339.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1107" ><span style="display:none;">饭扫光</span><img src="http://222.180.164.21/statics/attachment/brand/201607052201340309.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1117" ><span style="display:none;">金花笙</span><img src="http://222.180.164.21/statics/attachment/brand/201607041510439560.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1119" ><span style="display:none;">浪莎</span><img src="http://222.180.164.21/statics/attachment/brand/201607041511308699.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1131" ><span style="display:none;">清清美</span><img src="http://222.180.164.21/statics/attachment/brand/201607041514435202.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1132" ><span style="display:none;">秋霞</span><img src="http://222.180.164.21/statics/attachment/brand/201607041514544823.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1134" ><span style="display:none;">三美优家</span><img src="http://222.180.164.21/statics/attachment/brand/201607041516157394.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1135" ><span style="display:none;">太太乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607041516428262.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1136" ><span style="display:none;">天和人家</span><img src="http://222.180.164.21/statics/attachment/brand/201607052220322861.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1137" ><span style="display:none;">天蝎</span><img src="http://222.180.164.21/statics/attachment/brand/201607041517145092.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1138" ><span style="display:none;">味老大</span><img src="http://222.180.164.21/statics/attachment/brand/201607052219141753.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1139" ><span style="display:none;">味相逢</span><img src="http://222.180.164.21/statics/attachment/brand/201607041518498355.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1140" ><span style="display:none;">心相印</span><img src="http://222.180.164.21/statics/attachment/brand/201607201645441362.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1141" ><span style="display:none;">辛家老店</span><img src="http://222.180.164.21/statics/attachment/brand/201608021633357166.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1142" ><span style="display:none;">新感觉</span><img src="http://222.180.164.21/statics/attachment/brand/201607071732204743.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1143" ><span style="display:none;">一帆</span><img src="http://222.180.164.21/statics/attachment/brand/201607041520401644.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1144" ><span style="display:none;">易百仕</span><img src="http://222.180.164.21/statics/attachment/brand/201607041520540100.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1145" ><span style="display:none;">优选</span><img src="http://222.180.164.21/statics/attachment/brand/201607041521048313.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1146" ><span style="display:none;">正点</span><img src="http://222.180.164.21/statics/attachment/brand/201607041521178848.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1147" ><span style="display:none;">宗义</span><img src="http://222.180.164.21/statics/attachment/brand/201607181535351549.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1148" ><span style="display:none;">熊博士</span><img src="http://222.180.164.21/statics/attachment/brand/201607041551111115.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1149" ><span style="display:none;">波力</span><img src="http://222.180.164.21/statics/attachment/brand/201607041558092235.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1151" ><span style="display:none;">盼盼</span><img src="http://222.180.164.21/statics/attachment/brand/201607041602486691.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1152" ><span style="display:none;">思念</span><img src="http://222.180.164.21/statics/attachment/brand/201607041605328767.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1153" ><span style="display:none;">箭牌</span><img src="http://222.180.164.21/statics/attachment/brand/201607041608537511.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1154" ><span style="display:none;">溜溜梅</span><img src="http://222.180.164.21/statics/attachment/brand/201607041610365649.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1155" ><span style="display:none;">阿蓬江</span><img src="http://222.180.164.21/statics/attachment/brand/201608021647135825.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1156" ><span style="display:none;">千百度</span><img src="http://222.180.164.21/statics/attachment/brand/201607041619085969.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1157" ><span style="display:none;">福香源</span><img src="http://222.180.164.21/statics/attachment/brand/201607041623112532.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1158" ><span style="display:none;">周义</span><img src="http://222.180.164.21/statics/attachment/brand/201607041628264456.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1159" ><span style="display:none;">月亮街</span><img src="http://222.180.164.21/statics/attachment/brand/201607041630402843.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1160" ><span style="display:none;">趣园</span><img src="http://222.180.164.21/statics/attachment/brand/201607041633105327.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1161" ><span style="display:none;">口水娃</span><img src="http://222.180.164.21/statics/attachment/brand/201607041635070893.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1162" ><span style="display:none;">七味</span><img src="http://222.180.164.21/statics/attachment/brand/201607041641316444.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1163" ><span style="display:none;">卜比</span><img src="http://222.180.164.21/statics/attachment/brand/201607041656454078.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1164" ><span style="display:none;">好正点好媳妇</span><img src="http://222.180.164.21/statics/attachment/brand/201607041715492224.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1165" ><span style="display:none;">啃得爽</span><img src="http://222.180.164.21/statics/attachment/brand/201607041728556717.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1166" ><span style="display:none;">炫迈</span><img src="http://222.180.164.21/statics/attachment/brand/201607041731568593.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1167" ><span style="display:none;">艾尚你</span><img src="http://222.180.164.21/statics/attachment/brand/201607041736077362.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1168" ><span style="display:none;">宾王</span><img src="http://222.180.164.21/statics/attachment/brand/201607121206445317.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1169" ><span style="display:none;">汇丰信佳</span><img src="http://222.180.164.21/statics/attachment/brand/201607041753585226.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1170" ><span style="display:none;">康辉</span><img src="http://222.180.164.21/statics/attachment/brand/201607041758090322.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1171" ><span style="display:none;">渝窖酒业（渝老大）</span><img src="http://222.180.164.21/statics/attachment/brand/201607050852436169.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1172" ><span style="display:none;">飞达三和</span><img src="http://222.180.164.21/statics/attachment/brand/201607050858402376.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1173" ><span style="display:none;">老人头</span><img src="http://222.180.164.21/statics/attachment/brand/201607181611295620.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1174" ><span style="display:none;">新运隆</span><img src="http://222.180.164.21/statics/attachment/brand/201607050916485621.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1175" ><span style="display:none;">纯雅</span><img src="http://222.180.164.21/statics/attachment/brand/201607050921052048.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1176" ><span style="display:none;">鲜厨牌</span><img src="http://222.180.164.21/statics/attachment/brand/201607050932314841.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1177" ><span style="display:none;">国泰</span><img src="http://222.180.164.21/statics/attachment/brand/201607050943001785.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1178" ><span style="display:none;">莎麦</span><img src="http://222.180.164.21/statics/attachment/brand/201607050949577053.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1179" ><span style="display:none;">二姐卤料</span><img src="http://222.180.164.21/statics/attachment/brand/201607050955593187.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1180" ><span style="display:none;">翠翠妹</span><img src="http://222.180.164.21/statics/attachment/brand/201608021635391771.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1181" ><span style="display:none;">Nature's Way绿之华</span><img src="http://222.180.164.21/statics/attachment/brand/201607051437332577.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1182" ><span style="display:none;">Floradix Iron铁元</span><img src="http://222.180.164.21/statics/attachment/brand/201607051448223958.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1183" ><span style="display:none;">Nordic Naturals挪威小鱼</span><img src="http://222.180.164.21/statics/attachment/brand/201607051448539587.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1184" ><span style="display:none;">FatBlaster菲拉思德</span><img src="http://222.180.164.21/statics/attachment/brand/201607051452128712.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1185" ><span style="display:none;">澳大利亚NU-LAX</span><img src="http://222.180.164.21/statics/attachment/brand/201607051458237614.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1186" ><span style="display:none;">Blackmores澳佳宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607051459340270.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1187" ><span style="display:none;">Swisse瑞思</span><img src="http://222.180.164.21/statics/attachment/brand/201607051500472454.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1188" ><span style="display:none;">Culturelle康萃乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607051501457857.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1189" ><span style="display:none;">Doppelherz双心</span><img src="http://222.180.164.21/statics/attachment/brand/201607051502528133.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1190" ><span style="display:none;">Red Seal红印</span><img src="http://222.180.164.21/statics/attachment/brand/201607051505014155.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1191" ><span style="display:none;">Vitabiotics薇塔贝尔</span><img src="http://222.180.164.21/statics/attachment/brand/201607051511481837.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=133" ><span style="display:none;">旺旺</span><img src="http://222.180.164.21/statics/attachment/brand/201607181439020279.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=2" ><span style="display:none;">新农哥</span><img src="http://222.180.164.21/statics/attachment/brand/201202211143461491.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=3" ><span style="display:none;">洽洽</span><img src="http://222.180.164.21/statics/attachment/brand/201506021637233312.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=4" ><span style="display:none;">百味林</span><img src="http://222.180.164.21/statics/attachment/brand/201202211152387107.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=5" ><span style="display:none;">乐事</span><img src="http://222.180.164.21/statics/attachment/brand/201506021637330291.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=132" ><span style="display:none;">上好佳</span><img src="http://222.180.164.21/statics/attachment/brand/201506021637411055.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1" ><span style="display:none;">天喔</span><img src="http://222.180.164.21/statics/attachment/brand/201202211200113292.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=6" ><span style="display:none;">金帝</span><img src="http://222.180.164.21/statics/attachment/brand/201506021637590860.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=9" ><span style="display:none;">好时</span><img src="http://222.180.164.21/statics/attachment/brand/201202221018146247.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=10" ><span style="display:none;">瑞士莲</span><img src="http://222.180.164.21/statics/attachment/brand/201202221035341549.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=11" ><span style="display:none;">德芙</span><img src="http://222.180.164.21/statics/attachment/brand/201506021638510916.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=12" ><span style="display:none;">可口可乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607181602079036.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=13" ><span style="display:none;">百事</span><img src="http://222.180.164.21/statics/attachment/brand/201506021638154297.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=14" ><span style="display:none;">农夫山泉</span><img src="http://222.180.164.21/statics/attachment/brand/201202221042275274.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=15" ><span style="display:none;">五粮液</span><img src="http://222.180.164.21/statics/attachment/brand/201202221044295459.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=16" ><span style="display:none;">阿尔卑斯</span><img src="http://222.180.164.21/statics/attachment/brand/201202221654250514.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=17" ><span style="display:none;">大白兔</span><img src="http://222.180.164.21/statics/attachment/brand/201202221658088525.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=18" ><span style="display:none;">伊利</span><img src="http://222.180.164.21/statics/attachment/brand/201202221659311713.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=19" ><span style="display:none;">益达</span><img src="http://222.180.164.21/statics/attachment/brand/201506021638251283.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=20" ><span style="display:none;">绿箭</span><img src="http://222.180.164.21/statics/attachment/brand/201506021638345982.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=21" ><span style="display:none;">好丽友</span><img src="http://222.180.164.21/statics/attachment/brand/201506021638420007.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=22" ><span style="display:none;">康师傅</span><img src="http://222.180.164.21/statics/attachment/brand/201607052208066637.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=23" ><span style="display:none;">娃哈哈</span><img src="http://222.180.164.21/statics/attachment/brand/201202221728161737.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1207" ><span style="display:none;">百嘉原</span><img src="http://222.180.164.21/statics/attachment/brand/201607071517049107.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=24" ><span style="display:none;">统一</span><img src="http://222.180.164.21/statics/attachment/brand/201202221729517242.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=25" ><span style="display:none;">郎酒</span><img src="http://222.180.164.21/statics/attachment/brand/201607052048239884.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1062" ><span style="display:none;">江津老白干</span><img src="http://222.180.164.21/statics/attachment/brand/201607041351102183.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1064" ><span style="display:none;">青岛啤酒</span><img src="http://222.180.164.21/statics/attachment/brand/201607041400307840.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1065" ><span style="display:none;">金六福</span><img src="http://222.180.164.21/statics/attachment/brand/201607041403212377.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1066" ><span style="display:none;">张裕红酒</span><img src="http://222.180.164.21/statics/attachment/brand/201607041408494345.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1069" ><span style="display:none;">奥妙</span><img src="http://222.180.164.21/statics/attachment/brand/201607041413426892.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1070" ><span style="display:none;">泸州老窖</span><img src="http://222.180.164.21/statics/attachment/brand/201607041414040864.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1071" ><span style="display:none;">佳洁士</span><img src="http://222.180.164.21/statics/attachment/brand/201607041414503542.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1072" ><span style="display:none;">护舒宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607041416097397.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1073" ><span style="display:none;">汰渍</span><img src="http://222.180.164.21/statics/attachment/brand/201607211041252614.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1074" ><span style="display:none;">碧浪</span><img src="http://222.180.164.21/statics/attachment/brand/201607041418325642.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1077" ><span style="display:none;">雕牌</span><img src="http://222.180.164.21/statics/attachment/brand/201607041421413896.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1078" ><span style="display:none;">超能</span><img src="http://222.180.164.21/statics/attachment/brand/201607041422226385.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1079" ><span style="display:none;">山城啤酒</span><img src="http://222.180.164.21/statics/attachment/brand/201607041423241428.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1080" ><span style="display:none;">爱家</span><img src="http://222.180.164.21/statics/attachment/brand/201607041424174462.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1081" ><span style="display:none;">超威</span><img src="http://222.180.164.21/statics/attachment/brand/201607041425383550.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1083" ><span style="display:none;">诗仙太白</span><img src="http://222.180.164.21/statics/attachment/brand/201607041427033579.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1084" ><span style="display:none;">蓝漂</span><img src="http://222.180.164.21/statics/attachment/brand/201607041428268975.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1085" ><span style="display:none;">中国劲酒</span><img src="http://222.180.164.21/statics/attachment/brand/201607041430042814.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1086" ><span style="display:none;">舒齿达</span><img src="http://222.180.164.21/statics/attachment/brand/201607041430321662.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1087" ><span style="display:none;">米老头</span><img src="http://222.180.164.21/statics/attachment/brand/201607041431580353.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1088" ><span style="display:none;">奥利奥</span><img src="http://222.180.164.21/statics/attachment/brand/201607041433010783.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1089" ><span style="display:none;">二锅头</span><img src="http://222.180.164.21/statics/attachment/brand/201607041438485785.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1090" ><span style="display:none;">神来醉</span><img src="http://222.180.164.21/statics/attachment/brand/201607041443128301.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1091" ><span style="display:none;">双汇</span><img src="http://222.180.164.21/statics/attachment/brand/201607041443431992.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1092" ><span style="display:none;">锐澳</span><img src="http://222.180.164.21/statics/attachment/brand/201607041445132481.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1093" ><span style="display:none;">江小白</span><img src="http://222.180.164.21/statics/attachment/brand/201607041446523682.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1094" ><span style="display:none;">贝因美</span><img src="http://222.180.164.21/statics/attachment/brand/201607041452076697.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1095" ><span style="display:none;">圣元</span><img src="http://222.180.164.21/statics/attachment/brand/201607041454573569.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1096" ><span style="display:none;">白象</span><img src="http://222.180.164.21/statics/attachment/brand/201607041456387778.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1097" ><span style="display:none;">ABC</span><img src="http://222.180.164.21/statics/attachment/brand/201607041458475676.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1098" ><span style="display:none;">安尔乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607041459144600.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1100" ><span style="display:none;">可比克</span><img src="http://222.180.164.21/statics/attachment/brand/201607041500165550.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1101" ><span style="display:none;">贝柔</span><img src="http://222.180.164.21/statics/attachment/brand/201607041500182345.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1102" ><span style="display:none;">边城故事</span><img src="http://222.180.164.21/statics/attachment/brand/201607052212333537.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1103" ><span style="display:none;">彩虹</span><img src="http://222.180.164.21/statics/attachment/brand/201607041502154089.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1104" ><span style="display:none;">朝天香</span><img src="http://222.180.164.21/statics/attachment/brand/201607041502362817.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1105" ><span style="display:none;">丹丹</span><img src="http://222.180.164.21/statics/attachment/brand/201607052113595582.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1106" ><span style="display:none;">得惠</span><img src="http://222.180.164.21/statics/attachment/brand/201607041503123445.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1108" ><span style="display:none;">公牛</span><img src="http://222.180.164.21/statics/attachment/brand/201607041503460583.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1109" ><span style="display:none;">海天</span><img src="http://222.180.164.21/statics/attachment/brand/201607041506171364.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1110" ><span style="display:none;">红蜻蜓粮油</span><img src="http://222.180.164.21/statics/attachment/brand/201607052123411668.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1111" ><span style="display:none;">加加</span><img src="http://222.180.164.21/statics/attachment/brand/201607041507135104.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1112" ><span style="display:none;">家欣</span><img src="http://222.180.164.21/statics/attachment/brand/201607041507291760.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1113" ><span style="display:none;">娇娇宝贝</span><img src="http://222.180.164.21/statics/attachment/brand/201607041507488111.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1114" ><span style="display:none;">洁丽雅</span><img src="http://222.180.164.21/statics/attachment/brand/201607052133005226.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1115" ><span style="display:none;">洁伶</span><img src="http://222.180.164.21/statics/attachment/brand/201607041508344614.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1116" ><span style="display:none;">洁柔</span><img src="http://222.180.164.21/statics/attachment/brand/201607041508451724.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1118" ><span style="display:none;">蓝月亮</span><img src="http://222.180.164.21/statics/attachment/brand/201607181509053964.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1120" ><span style="display:none;">老干妈</span><img src="http://222.180.164.21/statics/attachment/brand/201608021654527179.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1121" ><span style="display:none;">旺仔</span><img src="http://222.180.164.21/statics/attachment/brand/201607041511513978.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1122" ><span style="display:none;">老七牌</span><img src="http://222.180.164.21/statics/attachment/brand/201607041512144919.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1123" ><span style="display:none;">立白</span><img src="http://222.180.164.21/statics/attachment/brand/201607041512269228.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1124" ><span style="display:none;">靓肤</span><img src="http://222.180.164.21/statics/attachment/brand/201607052223381335.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1125" ><span style="display:none;">龙士达</span><img src="http://222.180.164.21/statics/attachment/brand/201607041513047211.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1127" ><span style="display:none;">郫筒</span><img src="http://222.180.164.21/statics/attachment/brand/201607041513315194.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1128" ><span style="display:none;">七度空间</span><img src="http://222.180.164.21/statics/attachment/brand/201607041513566711.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1129" ><span style="display:none;">齐齐</span><img src="http://222.180.164.21/statics/attachment/brand/201607041514111605.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1130" ><span style="display:none;">清风</span><img src="http://222.180.164.21/statics/attachment/brand/201607041514324393.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1133" ><span style="display:none;">日美</span><img src="http://222.180.164.21/statics/attachment/brand/201607041515199865.JPG" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1193" ><span style="display:none;">Nature's Care纳世凯尔</span><img src="http://222.180.164.21/statics/attachment/brand/201607051515405429.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1194" ><span style="display:none;">红双喜</span><img src="http://222.180.164.21/statics/attachment/brand/201607052011390605.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1195" ><span style="display:none;">又一喜</span><img src="http://222.180.164.21/statics/attachment/brand/201607052020327857.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1196" ><span style="display:none;">恒博（体育）</span><img src="http://222.180.164.21/statics/attachment/brand/201607052156498705.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1198" ><span style="display:none;">东北坊</span><img src="http://222.180.164.21/statics/attachment/brand/201607061019107407.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1200" ><span style="display:none;">牛浪汉</span><img src="http://222.180.164.21/statics/attachment/brand/201607061209071150.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1215" ><span style="display:none;">和其正</span><img src="http://222.180.164.21/statics/attachment/brand/201607091343117676.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1220" ><span style="display:none;">Hamu</span><img src="http://222.180.164.21/statics/attachment/brand/201607111043256231.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1223" ><span style="display:none;">zippo</span><img src="http://222.180.164.21/statics/attachment/brand/201607131442558768.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1239" ><span style="display:none;">苹果/Apple</span><img src="http://222.180.164.21/statics/attachment/brand/201607181502191811.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1275" ><span style="display:none;">Milumel法国牛栏</span><img src="http://222.180.164.21/statics/attachment/brand/201607261527172737.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1276" ><span style="display:none;">Cow&Gate英国牛栏</span><img src="http://222.180.164.21/statics/attachment/brand/201607261531523803.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1279" ><span style="display:none;">Nanny care纳尼凯尔</span><img src="http://222.180.164.21/statics/attachment/brand/201608030951152925.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1288" ><span style="display:none;">可瑞康Karicare Aptamil</span><img src="http://222.180.164.21/statics/attachment/brand/201608030953068263.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1319" ><span style="display:none;">依思Q</span><img src="http://222.180.164.21/statics/attachment/brand/201608021535010618.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=26" ><span style="display:none;">洋河</span><img src="http://222.180.164.21/statics/attachment/brand/201202221742498256.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=27" ><span style="display:none;">百威</span><img src="http://222.180.164.21/statics/attachment/brand/201607052056238379.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=28" ><span style="display:none;">哈尔滨</span><img src="http://222.180.164.21/statics/attachment/brand/201202221747410265.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=29" ><span style="display:none;">爱士堡</span><img src="http://222.180.164.21/statics/attachment/brand/201607052058323518.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=30" ><span style="display:none;">百利</span><img src="http://222.180.164.21/statics/attachment/brand/201607052101090837.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=32" ><span style="display:none;">欧德堡（Oldenburger）</span><img src="http://222.180.164.21/statics/attachment/brand/201607181549567392.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=33" ><span style="display:none;">多美鲜</span><img src="http://222.180.164.21/statics/attachment/brand/201607052102349982.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=35" ><span style="display:none;">丹麦蓝罐</span><img src="http://222.180.164.21/statics/attachment/brand/201607052105212678.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=38" ><span style="display:none;">玛勃洛可</span><img src="http://222.180.164.21/statics/attachment/brand/201202222100337891.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=42" ><span style="display:none;">益昌老街</span><img src="http://222.180.164.21/statics/attachment/brand/201607181555441013.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=44" ><span style="display:none;">张君雅</span><img src="http://222.180.164.21/statics/attachment/brand/201202222116468759.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=45" ><span style="display:none;">鲜得味</span><img src="http://222.180.164.21/statics/attachment/brand/201607052111087191.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=47" ><span style="display:none;">玉兰油/Olay</span><img src="http://222.180.164.21/statics/attachment/brand/201505281340186908.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=49" ><span style="display:none;">Hunts/汉斯</span><img src="http://222.180.164.21/statics/attachment/brand/201607052120374324.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=52" ><span style="display:none;">Shiseido/资生堂</span><img src="http://222.180.164.21/statics/attachment/brand/201202222258101961.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=56" ><span style="display:none;">Inoherb/相宜本草</span><img src="http://222.180.164.21/statics/attachment/brand/201505281338306645.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=57" ><span style="display:none;">Mentholatum/曼秀雷敦</span><img src="http://222.180.164.21/statics/attachment/brand/201202231018171140.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=58" ><span style="display:none;">Herborist/佰草集</span><img src="http://222.180.164.21/statics/attachment/brand/201202231020005541.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=59" ><span style="display:none;">海飞丝</span><img src="http://222.180.164.21/statics/attachment/brand/201607181450057112.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=60" ><span style="display:none;">潘婷</span><img src="http://222.180.164.21/statics/attachment/brand/201607181451566230.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=61" ><span style="display:none;">飘柔</span><img src="http://222.180.164.21/statics/attachment/brand/201202231149270759.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=62" ><span style="display:none;">多美滋</span><img src="http://222.180.164.21/statics/attachment/brand/201607181533014417.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=63" ><span style="display:none;">美赞臣</span><img src="http://222.180.164.21/statics/attachment/brand/201506021639212399.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=64" ><span style="display:none;">光明</span><img src="http://222.180.164.21/statics/attachment/brand/201505201617479112.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=65" ><span style="display:none;">雅培</span><img src="http://222.180.164.21/statics/attachment/brand/201505201618077764.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=66" ><span style="display:none;">Nestle/雀巢</span><img src="http://222.180.164.21/statics/attachment/brand/201506021639024964.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=67" ><span style="display:none;">妈咪宝贝</span><img src="http://222.180.164.21/statics/attachment/brand/201505281323180637.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=68" ><span style="display:none;">帮宝适</span><img src="http://222.180.164.21/statics/attachment/brand/201607052225362955.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=69" ><span style="display:none;">强生/Johnson</span><img src="http://222.180.164.21/statics/attachment/brand/201607181444595204.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=70" ><span style="display:none;">好奇</span><img src="http://222.180.164.21/statics/attachment/brand/201505281327121827.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=71" ><span style="display:none;">Bonyee/邦怡</span><img src="http://222.180.164.21/statics/attachment/brand/201607052135513375.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=72" ><span style="display:none;">良良</span><img src="http://222.180.164.21/statics/attachment/brand/201607052139404587.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=73" ><span style="display:none;">喜亲宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607052138084673.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=75" ><span style="display:none;">亨氏</span><img src="http://222.180.164.21/statics/attachment/brand/201202232302299961.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=76" ><span style="display:none;">伊威</span><img src="http://222.180.164.21/statics/attachment/brand/201202232303236077.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=77" ><span style="display:none;">欧格尼</span><img src="http://222.180.164.21/statics/attachment/brand/201202232304418701.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=78" ><span style="display:none;">Pigeon/贝亲</span><img src="http://222.180.164.21/statics/attachment/brand/201505281322496039.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=79" ><span style="display:none;">嗳呵</span><img src="http://222.180.164.21/statics/attachment/brand/201505281328029148.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=80" ><span style="display:none;">铃兰</span><img src="http://222.180.164.21/statics/attachment/brand/201202232346471548.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=81" ><span style="display:none;">爱得利</span><img src="http://222.180.164.21/statics/attachment/brand/201608030956512947.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=84" ><span style="display:none;">利其尔</span><img src="http://222.180.164.21/statics/attachment/brand/201607052141598317.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=85" ><span style="display:none;">亲亲我</span><img src="http://222.180.164.21/statics/attachment/brand/201202240003319744.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=87" ><span style="display:none;">丹尼熊</span><img src="http://222.180.164.21/statics/attachment/brand/201607052146409893.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=88" ><span style="display:none;">蒂乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607052149343683.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=89" ><span style="display:none;">皇家宝贝</span><img src="http://222.180.164.21/statics/attachment/brand/201607052151589848.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=90" ><span style="display:none;">ASD/爱仕达</span><img src="http://222.180.164.21/statics/attachment/brand/201202242158308119.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=91" ><span style="display:none;">双立人</span><img src="http://222.180.164.21/statics/attachment/brand/201607052127102976.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=94" ><span style="display:none;">张小泉</span><img src="http://222.180.164.21/statics/attachment/brand/201607052129485854.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=95" ><span style="display:none;">金仕顿(Kingstone)</span><img src="http://222.180.164.21/statics/attachment/brand/201607052045121003.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=96" ><span style="display:none;">Only</span><img src="http://222.180.164.21/statics/attachment/brand/201608021527220719.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=101" ><span style="display:none;">意尔康</span><img src="http://222.180.164.21/statics/attachment/brand/201505201455212948.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=102" ><span style="display:none;">红蜻蜓</span><img src="http://222.180.164.21/statics/attachment/brand/201505201455387375.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=106" ><span style="display:none;">天美意</span><img src="http://222.180.164.21/statics/attachment/brand/201505201455527870.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=109" ><span style="display:none;">匡威CONVERSE</span><img src="http://222.180.164.21/statics/attachment/brand/201608021534252588.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=114" ><span style="display:none;">加多宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607052112411064.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=115" ><span style="display:none;">  韩束（KAN’S）</span><img src="http://222.180.164.21/statics/attachment/brand/201504021053106373.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=116" ><span style="display:none;">妮维雅（NIVEA）</span><img src="http://222.180.164.21/statics/attachment/brand/201607181519571180.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=117" ><span style="display:none;">清扬（CLEAR）</span><img src="http://222.180.164.21/statics/attachment/brand/201607181527408442.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=118" ><span style="display:none;">卓诗尼</span><img src="http://222.180.164.21/statics/attachment/brand/201505201456394957.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=119" ><span style="display:none;">富贵鸟</span><img src="http://222.180.164.21/statics/attachment/brand/201505201456554666.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=123" ><span style="display:none;">汤臣倍健</span><img src="http://222.180.164.21/statics/attachment/brand/201504092004219964.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=124" ><span style="display:none;">太平鸟</span><img src="http://222.180.164.21/statics/attachment/brand/201504092001166115.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=125" ><span style="display:none;">劲霸</span><img src="http://222.180.164.21/statics/attachment/brand/201504091959574220.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=126" ><span style="display:none;">  古驰（GUCCI）</span><img src="http://222.180.164.21/statics/attachment/brand/201504091954043917.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=127" ><span style="display:none;"> 香奈儿（Chanel）</span><img src="http://222.180.164.21/statics/attachment/brand/201505281340575395.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=128" ><span style="display:none;">奥康</span><img src="http://222.180.164.21/statics/attachment/brand/201505201457317056.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=129" ><span style="display:none;"> 爱华仕（OIWAS）</span><img src="http://222.180.164.21/statics/attachment/brand/201607181529493667.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=130" ><span style="display:none;">卡西欧（CASIO）</span><img src="http://222.180.164.21/statics/attachment/brand/201504101910266823.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=131" ><span style="display:none;">周生生</span><img src="http://222.180.164.21/statics/attachment/brand/201504120951026291.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1000" ><span style="display:none;">武陵遗风</span><img src="http://222.180.164.21/statics/attachment/brand/201608021617317940.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1020" ><span style="display:none;">隆力奇</span><img src="http://222.180.164.21/statics/attachment/brand/201607041056444345.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1021" ><span style="display:none;">六神</span><img src="http://222.180.164.21/statics/attachment/brand/201607041058414620.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1025" ><span style="display:none;">怡宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607041101507574.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1026" ><span style="display:none;">王老吉</span><img src="http://222.180.164.21/statics/attachment/brand/201607041103038077.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1028" ><span style="display:none;">舒肤佳</span><img src="http://222.180.164.21/statics/attachment/brand/201607041105097375.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1031" ><span style="display:none;">脉动</span><img src="http://222.180.164.21/statics/attachment/brand/201607041108099389.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1032" ><span style="display:none;">郁美净</span><img src="http://222.180.164.21/statics/attachment/brand/201607041108511636.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1033" ><span style="display:none;">大宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607201524149408.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1034" ><span style="display:none;">喜之郎</span><img src="http://222.180.164.21/statics/attachment/brand/201607041110015613.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1036" ><span style="display:none;">火烈鸟</span><img src="http://222.180.164.21/statics/attachment/brand/201607041111344245.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1042" ><span style="display:none;">杰西眼镜</span><img src="http://222.180.164.21/statics/attachment/brand/201607041120529800.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1043" ><span style="display:none;">新鸟眼镜</span><img src="http://222.180.164.21/statics/attachment/brand/201607041124082478.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1044" ><span style="display:none;">南孚电池</span><img src="http://222.180.164.21/statics/attachment/brand/201608031459389802.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1047" ><span style="display:none;">红牛</span><img src="http://222.180.164.21/statics/attachment/brand/201607041136108310.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1048" ><span style="display:none;">得力</span><img src="http://222.180.164.21/statics/attachment/brand/201607041135463986.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1049" ><span style="display:none;">齐心</span><img src="http://222.180.164.21/statics/attachment/brand/201607041137523778.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1050" ><span style="display:none;">真彩</span><img src="http://222.180.164.21/statics/attachment/brand/201607041139143755.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1053" ><span style="display:none;">文博</span><img src="http://222.180.164.21/statics/attachment/brand/201607041144240778.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1054" ><span style="display:none;">银鹭</span><img src="http://222.180.164.21/statics/attachment/brand/201607041146314824.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1022" ><span style="display:none;">天友</span><img src="http://222.180.164.21/statics/attachment/brand/201607041059428956.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1023" ><span style="display:none;">多芬</span><img src="http://222.180.164.21/statics/attachment/brand/201607041100091414.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1027" ><span style="display:none;">旁氏</span><img src="http://222.180.164.21/statics/attachment/brand/201607041103452720.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1037" ><span style="display:none;">欧蒙</span><img src="http://222.180.164.21/statics/attachment/brand/201607041112425783.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1041" ><span style="display:none;">美年达</span><img src="http://222.180.164.21/statics/attachment/brand/201608021649193953.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1045" ><span style="display:none;">七喜</span><img src="http://222.180.164.21/statics/attachment/brand/201607041128068073.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1051" ><span style="display:none;">百岁山</span><img src="http://222.180.164.21/statics/attachment/brand/201607052204315008.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1052" ><span style="display:none;">蒙牛</span><img src="http://222.180.164.21/statics/attachment/brand/201607041142527954.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1055" ><span style="display:none;">云南白药</span><img src="http://222.180.164.21/statics/attachment/brand/201607041147266883.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1056" ><span style="display:none;">威猛先生</span><img src="http://222.180.164.21/statics/attachment/brand/201607041153152980.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1057" ><span style="display:none;">夏士莲</span><img src="http://222.180.164.21/statics/attachment/brand/201607041209459711.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1058" ><span style="display:none;">熊出没</span><img src="http://222.180.164.21/statics/attachment/brand/201607041243543826.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1059" ><span style="display:none;">雪碧</span><img src="http://222.180.164.21/statics/attachment/brand/201607041251296098.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1060" ><span style="display:none;">芬达</span><img src="http://222.180.164.21/statics/attachment/brand/201607041253320875.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1061" ><span style="display:none;">美汁源</span><img src="http://222.180.164.21/statics/attachment/brand/201608021652199523.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1322" ><span style="display:none;">钰豪照明</span><img src="http://222.180.164.21/statics/attachment/brand/201608061433329723.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1343" ><span style="display:none;">CHANGSHENG</span><img src="http://222.180.164.21/statics/attachment/brand/201608081648119559.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1346" ><span style="display:none;">玉农</span><img src="http://222.180.164.21/statics/attachment/brand/201608081735450747.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1358" ><span style="display:none;">飞利浦philips</span><img src="http://222.180.164.21/statics/attachment/brand/201608120840593937.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1197" ><span style="display:none;">咕咕嘴</span><img src="http://222.180.164.21/statics/attachment/brand/201608021625173458.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1218" ><span style="display:none;">果正益源</span><img src="http://222.180.164.21/statics/attachment/brand/201607110925049699.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1219" ><span style="display:none;">乐虎</span><img src="http://222.180.164.21/statics/attachment/brand/201607111021544488.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1210" ><span style="display:none;">福娃</span><img src="http://222.180.164.21/statics/attachment/brand/201607071606191488.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1211" ><span style="display:none;">Aptamil爱他美</span><img src="http://222.180.164.21/statics/attachment/brand/201607071631542545.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1213" ><span style="display:none;">Devondale德运</span><img src="http://222.180.164.21/statics/attachment/brand/201607071717577159.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1236" ><span style="display:none;">现代美</span><img src="http://222.180.164.21/statics/attachment/brand/201607180949114114.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1286" ><span style="display:none;">a2</span><img src="http://222.180.164.21/statics/attachment/brand/201608030949082170.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1287" ><span style="display:none;">Bellamys贝拉米</span><img src="http://222.180.164.21/statics/attachment/brand/201608030948041893.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1318" ><span style="display:none;">达芙妮</span><img src="http://222.180.164.21/statics/attachment/brand/201608021528509368.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1340" ><span style="display:none;">华丰草业</span><img src="http://222.180.164.21/statics/attachment/brand/201608081630481027.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1341" ><span style="display:none;">种都种业</span><img src="http://222.180.164.21/statics/attachment/brand/201608081635175313.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1378" ><span style="display:none;">宝马</span><img src="http://222.180.164.21/statics/attachment/brand/201608221016010259.gif" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1380" ><span style="display:none;">路虎</span><img src="http://222.180.164.21/statics/attachment/brand/201608221018002039.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1384" ><span style="display:none;">林肯</span><img src="http://222.180.164.21/statics/attachment/brand/201608221018553033.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1386" ><span style="display:none;">丰田</span><img src="http://222.180.164.21/statics/attachment/brand/201608221019267197.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1387" ><span style="display:none;">雪佛兰</span><img src="http://222.180.164.21/statics/attachment/brand/201608221020109803.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1388" ><span style="display:none;">凯迪拉克</span><img src="http://222.180.164.21/statics/attachment/brand/201608221020372660.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1392" ><span style="display:none;">福特</span><img src="http://222.180.164.21/statics/attachment/brand/201608221022390147.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1393" ><span style="display:none;">陈记湘西羊</span><img src="http://222.180.164.21/statics/attachment/brand/201608221431095898.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1394" ><span style="display:none;">无</span><img src="http://222.180.164.21/statics/attachment/brand/201608221538133409.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1418" ><span style="display:none;">JEEP</span><img src="http://222.180.164.21/statics/attachment/brand/201608260912566806.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1212" ><span style="display:none;">Nutrilon荷兰牛栏</span><img src="http://222.180.164.21/statics/attachment/brand/201607071700310086.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1216" ><span style="display:none;">果倍爽</span><img src="http://222.180.164.21/statics/attachment/brand/201607091438551590.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1217" ><span style="display:none;">香飘飘</span><img src="http://222.180.164.21/statics/attachment/brand/201607110919157221.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1280" ><span style="display:none;">Hipp喜宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607271714497239.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1285" ><span style="display:none;">Similac Go&Grow雅培</span><img src="http://222.180.164.21/statics/attachment/brand/201608031015360717.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1339" ><span style="display:none;">大宋</span><img src="http://222.180.164.21/statics/attachment/brand/201608081623068688.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1342" ><span style="display:none;">航城种业</span><img src="http://222.180.164.21/statics/attachment/brand/201608081643083426.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1348" ><span style="display:none;">龙昌</span><img src="http://222.180.164.21/statics/attachment/brand/201608081754002534.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1350" ><span style="display:none;">嘉施利</span><img src="http://222.180.164.21/statics/attachment/brand/201608090934214309.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1199" ><span style="display:none;">优乐美</span><img src="http://222.180.164.21/statics/attachment/brand/201607061043466167.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1203" ><span style="display:none;">真知棒</span><img src="http://222.180.164.21/statics/attachment/brand/201607061314524996.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1278" ><span style="display:none;">绿谷贝贝</span><img src="http://222.180.164.21/statics/attachment/brand/201608021607047060.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1345" ><span style="display:none;">华良种业</span><img src="http://222.180.164.21/statics/attachment/brand/201608081731013150.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1379" ><span style="display:none;">奥迪</span><img src="http://222.180.164.21/statics/attachment/brand/201608221017424618.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1381" ><span style="display:none;">奔驰</span><img src="http://222.180.164.21/statics/attachment/brand/201608221018126960.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1382" ><span style="display:none;">捷豹</span><img src="http://222.180.164.21/statics/attachment/brand/201608221018288499.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1383" ><span style="display:none;">保时捷</span><img src="http://222.180.164.21/statics/attachment/brand/201608221018402957.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1385" ><span style="display:none;">沃尔沃</span><img src="http://222.180.164.21/statics/attachment/brand/201608221019091545.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1398" ><span style="display:none;">武陵山珍</span><img src="http://222.180.164.21/statics/attachment/brand/201608241700218655.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1201" ><span style="display:none;">怡口莲</span><img src="http://222.180.164.21/statics/attachment/brand/201607061305208867.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1206" ><span style="display:none;">爱时乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607071510589567.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1221" ><span style="display:none;">优乐多</span><img src="http://222.180.164.21/statics/attachment/brand/201607111057576910.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1237" ><span style="display:none;">晨光</span><img src="http://222.180.164.21/statics/attachment/brand/201607180957382675.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1282" ><span style="display:none;">Holle泓乐</span><img src="http://222.180.164.21/statics/attachment/brand/201607271721515968.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1283" ><span style="display:none;">Topfer特福芬</span><img src="http://222.180.164.21/statics/attachment/brand/201607271724227631.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1202" ><span style="display:none;">徐福记</span><img src="http://222.180.164.21/statics/attachment/brand/201607061312215075.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1204" ><span style="display:none;">趣多多</span><img src="http://222.180.164.21/statics/attachment/brand/201607061317283332.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1205" ><span style="display:none;">大大（泡泡糖）</span><img src="http://222.180.164.21/statics/attachment/brand/201607061320217310.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1214" ><span style="display:none;">宝娜斯</span><img src="http://222.180.164.21/statics/attachment/brand/201607080850536789.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1255" ><span style="display:none;">孩儿面</span><img src="http://222.180.164.21/statics/attachment/brand/201607201502094992.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1256" ><span style="display:none;">调皮宝</span><img src="http://222.180.164.21/statics/attachment/brand/201607201516479980.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1277" ><span style="display:none;">南京同仁堂</span><img src="http://222.180.164.21/statics/attachment/brand/201607261553033230.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1284" ><span style="display:none;"> Wyeth惠氏</span><img src="http://222.180.164.21/statics/attachment/brand/201607271726254135.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1320" ><span style="display:none;">母康民（母氏皮蛋盐蛋）</span><img src="http://222.180.164.21/statics/attachment/brand/201608031451034562.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1347" ><span style="display:none;">珍托</span><img src="http://222.180.164.21/statics/attachment/brand/201608081743148390.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1349" ><span style="display:none;">朝古得</span><img src="http://222.180.164.21/statics/attachment/brand/201608090904228310.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1389" ><span style="display:none;">特斯拉</span><img src="http://222.180.164.21/statics/attachment/brand/201608221020533682.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1390" ><span style="display:none;">雷克萨斯</span><img src="http://222.180.164.21/statics/attachment/brand/201608221021237531.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1391" ><span style="display:none;">玛莎拉蒂</span><img src="http://222.180.164.21/statics/attachment/brand/201608221022006625.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1208" ><span style="display:none;">Hero Baby美素</span><img src="http://222.180.164.21/statics/attachment/brand/201607071600049533.png" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1209" ><span style="display:none;">格力高</span><img src="http://222.180.164.21/statics/attachment/brand/201607071604266427.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1222" ><span style="display:none;">邦迪</span><img src="http://222.180.164.21/statics/attachment/brand/201607131025425919.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1235" ><span style="display:none;">蒂花之秀</span><img src="http://222.180.164.21/statics/attachment/brand/201607161105392793.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1238" ><span style="display:none;">Dior迪奥</span><img src="http://222.180.164.21/statics/attachment/brand/201607181455118044.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1240" ><span style="display:none;">OPPO</span><img src="http://222.180.164.21/statics/attachment/brand/201607181505545846.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1298" ><span style="display:none;">肽妃</span><img src="http://222.180.164.21/statics/attachment/brand/201608011459568627.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1438" ><span style="display:none;">植本主义</span><img src="http://222.180.164.21/statics/attachment/brand/201708211601358372.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1321" ><span style="display:none;">nouriz纽瑞滋</span><img src="http://222.180.164.21/statics/attachment/brand/201608051012370409.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1338" ><span style="display:none;">正兴种业</span><img src="http://222.180.164.21/statics/attachment/brand/201608081615338611.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1344" ><span style="display:none;">山丹飞达粉</span><img src="http://222.180.164.21/statics/attachment/brand/201608081716303726.jpg" /></a></li>
+						<li class="cat_brand_img"><a href="goods_list.html?search=goods&keyword=长春&brand=1458" ><span style="display:none;">蜗蜗</span><img src="http://222.180.164.21/statics/attachment/brand/201708220918026401.jpg" /></a></li>
+				</ul>
+				<span class="brand_goods_search_more">更多</span>
+			</td>
+		</tr>
+	</table>
+<script>
+	$(function(){
+		$(".brand_goods_search_more").click(function(){
+			var listhidden = $(this).attr("class");
+			if(listhidden=="brand_goods_search_more"){
+				$(this).prev().css("height","auto");
+				$(this).removeClass("brand_goods_search_more");
+				$(this).addClass("brand_goods_search_more1");
+				$(this).text("收起");
+			}else{
+				$(this).prev().css("height","52px");
+				$(this).removeClass("brand_goods_search_more1");
+				$(this).addClass("brand_goods_search_more");
+				$(this).text("更多");
+			}
+
+		})	
+	})
+</script>
+	<table class="wait_select">
+		<tr>
+			<th>按分类：</th>
+			<td>
+				<ul>
+						<li><a href="goods_list.html?cat=1129&search=goods&keyword=长春" >文化用品</a></li>
+						<li><a href="goods_list.html?cat=1&search=goods&keyword=长春" >食品、土货</a></li>
+						<li><a href="goods_list.html?cat=38&search=goods&keyword=长春" >美妆、护理</a></li>
+						<li><a href="goods_list.html?cat=56&search=goods&keyword=长春" >母婴、玩具</a></li>
+						<li><a href="goods_list.html?cat=79&search=goods&keyword=长春" >百货、清洁</a></li>
+						<li><a href="goods_list.html?cat=86&search=goods&keyword=长春" >服鞋饰品</a></li>
+						<li><a href="goods_list.html?cat=1179&search=goods&keyword=长春" >数码电器</a></li>
+						<li><a href="goods_list.html?cat=1255&search=goods&keyword=长春" >家居、工艺品</a></li>
+						<li><a href="goods_list.html?cat=1701&search=goods&keyword=长春" >汽车用品</a></li>
+						<li><a href="goods_list.html?cat=2681&search=goods&keyword=长春" >视图服务</a></li>
+						<li><a href="goods_list.html?cat=1296&search=goods&keyword=长春" >运动户外、娱乐</a></li>
+						<li><a href="goods_list.html?cat=2678&search=goods&keyword=长春" >旅游服务</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	<table class="wait_select">
+		<tr>
+			<th>按价格：</th>
+			<td>
+				<ul>
+						<li><a href="goods_list.html?price=_5&search=goods&keyword=长春" >5元以下</a></li>
+						<li><a href="goods_list.html?price=5_10&search=goods&keyword=长春" >5-10元</a></li>
+						<li><a href="goods_list.html?price=10_20&search=goods&keyword=长春" >10-20元</a></li>
+						<li><a href="goods_list.html?price=20_50&search=goods&keyword=长春" >20-50元</a></li>
+						<li><a href="goods_list.html?price=50_100&search=goods&keyword=长春" >50-100元</a></li>
+						<li><a href="goods_list.html?price=100_200&search=goods&keyword=长春" >100-200元</a></li>
+						<li><a href="goods_list.html?price=200_500&search=goods&keyword=长春" >200-500元</a></li>
+						<li><a href="goods_list.html?price=500_1000&search=goods&keyword=长春" >500-1000元</a></li>
+						<li><a href="goods_list.html?price=1000_&search=goods&keyword=长春" >1000元以上</a></li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+<input type="hidden" class="goods_more_hidden"  rel="1">
+<!-- 查看更多 -->
+<div class="goods_list_show">
+	<p>查看更多选项</p>
+</div>
+</div>
+<script>
+		$(function(){
+			//展开收缩
+			$(".goods_list_show").click(function(){
+				var idHidden = $(".goods_more_hidden").attr("rel");
+				//展示更多分类属性搜索
+				if(idHidden == "1"){
+					$(".wait_select_other").show();
+					$(this).find("p").text("收起选项");
+					$(".goods_more_hidden").attr("rel","0");
+					$(this).find("p").addClass("goods_list_show");
+				}else{
+					$(".wait_select_other").hide();
+					$(this).find("p").text("查看更多选项");
+					$(".goods_more_hidden").attr("rel","1");
+					$(this).find("p").removeClass("goods_list_show");
+				}
+			})
+			
+			//搜索结果
+			
+			$(".top_have_chosen_goods .have_chosen_goods_list").mouseover(function(){
+				var ulwidth = $(this).width()
+				var ulwidth_white = parseInt(ulwidth)+parseInt("30");
+				var ulborder_width = parseInt(ulwidth)+parseInt("141")   //减去ul的2像素边框
+				$(".top_have_chosen_goods .have_chosen_goods_list").find(".goods_list_other").hide();
+				$(".top_have_chosen_goods .have_chosen_goods_list").find(".ul_border").hide();
+				$(this).find(".goods_list_other").show();
+				$(this).find(".ul_border").show();
+				$(this).find(".goods_list_other").css("width",ulborder_width);
+				$(this).find(".ul_border").css("width",ulwidth_white);
+				$(this).css({"border":"1px solid #e4393e","border-bottom":"0px none"});
+			})
+			
+			$(".top_have_chosen_goods .have_chosen_goods_list").mouseleave(function(){
+				$(this).find(".goods_list_other").hide();
+				$(this).find(".ul_border").hide();
+				$(this).css("border","1px solid #ccc");
+			})
+			
+			
+			
+			
+			
+			
+			//等待搜索品牌悬停
+			$(".cat_brand_img").mouseover(function(){
+				$(this).find("img").hide();
+				$(this).find("span").show();
+				$(this).css({"border":"2px solid #e4393e","padding":"1px"});
+			})
+			$(".cat_brand_img").mouseleave(function(){
+				$(this).find("img").show();
+				$(this).find("span").hide();
+				$(this).css({"border":"1px solid #ccc","padding":"2px"});
+			})
+			
+			
+		})
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$.each($(".goodslist_sell"),function(){
+				var $that = $(this);
+				var goodid = $that.find("input[id^='goodid']").val();
+				$.ajax({
+					url:'/api/shop/goods!saleNum.do?goodsid=' + goodid,
+					dataType:'json',
+					cache: false,
+					success:function(json){
+						if(json.result==1){
+							$that.find("strong[id^='goodsSale']").html(json.num);
+						}else{
+							// alert(json.message);
+						}
+					},
+					error:function(){
+						// alert("意外错误");
+					}
+			});
+			});
+		});
+	</script>
+
+
+<div class="container wrapper" >
+	<div class="left">
+		<h1>为您推荐</h1>
+   		<ul class="goods_list_comment">
+			<li>	
+				<div class="goodslist_pic">
+					<a target="_blank" href="/goods-242607.html"> 
+<img src="http://222.180.164.21/statics/attachment//store/1/goods/201808311552441448_thumbnail.jpg" alt="武陵遗风.梵茗12泡茶  新茶" class="scrollLoading" />					</a>
+				</div>	
+				<h2><a target="_blank" href="/goods-242607.html">武陵遗风.梵茗12泡茶  新茶</a></h2>
+				<h3>￥0.00</h3>
+			</li>
+			<li>	
+				<div class="goodslist_pic">
+					<a target="_blank" href="/goods-253086.html"> 
+<img src="http://222.180.164.21/statics/attachment//store/1/goods/201810241600522707_thumbnail.jpg" alt="城口新鲜核桃湿核桃生核桃500g" class="scrollLoading" />					</a>
+				</div>	
+				<h2><a target="_blank" href="/goods-253086.html">城口新鲜核桃湿核桃生核桃500g...</a></h2>
+				<h3>￥20.00</h3>
+			</li>
+			<li>	
+				<div class="goodslist_pic">
+					<a target="_blank" href="/goods-253151.html"> 
+<img src="http://222.180.164.21/statics/attachment/store/1/goods/201811051545169497_thumbnail.jpg" alt="九重山野生核桃油" class="scrollLoading" />					</a>
+				</div>	
+				<h2><a target="_blank" href="/goods-253151.html">九重山野生核桃油</a></h2>
+				<h3>￥22.00</h3>
+			</li>
+			<li>	
+				<div class="goodslist_pic">
+					<a target="_blank" href="/goods-251607.html"> 
+<img src="http://222.180.164.21/statics/attachment//store/1/goods/201809251717390151_thumbnail.jpg" alt="农家自制降霜柿子饼1000g" class="scrollLoading" />					</a>
+				</div>	
+				<h2><a target="_blank" href="/goods-251607.html">农家自制降霜柿子饼1000g</a></h2>
+				<h3>￥21.60</h3>
+			</li>
+	</ul>
+	</div>
+	
+  	<div class="right" id="result">
+  		<div class="shop_list" >
+      		<nav class="goods_bar">
+        		<div class="sorting_goods"> 排序方式：
+        		<ul>
+						<li><a href="goods_list.html?sort=def_asc&search=goods&keyword=长春" class="selected asc" >默认</a></li>
+						<li><a href="goods_list.html?sort=buynum_desc&search=goods&keyword=长春"  >销量</a></li>
+						<li><a href="goods_list.html?sort=price_desc&search=goods&keyword=长春"  >价格</a></li>
+						<li><a href="goods_list.html?sort=grade_desc&search=goods&keyword=长春"  >评价</a></li>
+		     	</ul>
+        		</div>
+        		<!--  
+		        <div class="sortbar-owner">商品类型： 
+		        	<span>
+		        		<a href="javascript:void(0)" onClick="" title="不限"class="selected">
+		        		<i></i>全部</a>
+		        	</span> 
+		        	<span>
+		        		<a href="javascript:void(0)" onClick="" title="限时折扣">
+		        		<i></i>限时折扣</a>
+		        	</span>
+		        	<span>
+		        		<a href="javascript:void(0)" onClick="" title="团购">
+		        		<i></i>团购</a>
+		        	</span> 
+		        </div>
+		        -->
+      		</nav>
+      		<!-- 商品列表循环  -->
+			<div id="circulate" >
+				<textarea class="goodslist_bycat" id="circulate" style="display: none;">
+					<div class="squares" nc_type="current_display_mode">
+					    <ul class="goodslist_all ">
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-27732.html" target="_blank" title="吉林长春梅花鹿鹿心188元/个">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091439148848_thumbnail.jpg" alt="吉林长春梅花鹿鹿心188元/个" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-27732.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091439148848_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿心188元/个" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-27732.html" target="_blank" title="吉林长春梅花鹿鹿心188元/个">吉林长春梅花鹿鹿心188元/个</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：188.00">188.00 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid1" value="27732" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale1'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="27732" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-27731.html" target="_blank" title="吉林长春市双阳区鹿茸鲜 3.4元/克    100克起">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091426450771_thumbnail.jpg" alt="吉林长春市双阳区鹿茸鲜 3.4元/克    100克起" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-27731.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091426450771_thumbnail.jpg" height="60" alt="吉林长春市双阳区鹿茸鲜 3.4元/克    100克起" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-27731.html" target="_blank" title="吉林长春市双阳区鹿茸鲜 3.4元/克    100克起">吉林长春市双阳区鹿茸鲜 3.4元/克    100克起</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：3.40">3.40 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid2" value="27731" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale2'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="27731" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-27729.html" target="_blank" title="吉林长春市双阳县鹿胎粉  1.5元/克   100克起订">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091417478423_thumbnail.png" alt="吉林长春市双阳县鹿胎粉  1.5元/克   100克起订" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-27729.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201709091417478423_thumbnail.png" height="60" alt="吉林长春市双阳县鹿胎粉  1.5元/克   100克起订" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-27729.html" target="_blank" title="吉林长春市双阳县鹿胎粉  1.5元/克   100克起订">吉林长春市双阳县鹿胎粉  1.5元/克   100克起订</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：1.50">1.50 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid3" value="27729" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale3'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="27729" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-21835.html" target="_blank" title="吉林长春梅花鹿鹿筋500g/450元">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707221107584174_thumbnail.jpg" alt="吉林长春梅花鹿鹿筋500g/450元" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-21835.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707221107584174_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿筋500g/450元" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-21835.html" target="_blank" title="吉林长春梅花鹿鹿筋500g/450元">吉林长春梅花鹿鹿筋500g/450元</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：450.00">450.00 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid4" value="21835" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale4'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="21835" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-21824.html" target="_blank" title="吉林长春梅花鹿鹿角胶一级品 1.5元/克  100克起售">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211732357951_thumbnail.jpg" alt="吉林长春梅花鹿鹿角胶一级品 1.5元/克  100克起售" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-21824.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211732357951_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿角胶一级品 1.5元/克  100克起售" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-21824.html" target="_blank" title="吉林长春梅花鹿鹿角胶一级品 1.5元/克  100克起售">吉林长春梅花鹿鹿角胶一级品 1.5元/克  100克起售</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：1.50">1.50 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid5" value="21824" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale5'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="21824" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-21818.html" target="_blank" title="吉林长春梅花鹿鹿尾巴正宗正品鹿尾巴6元/克">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211654407217_thumbnail.jpg" alt="吉林长春梅花鹿鹿尾巴正宗正品鹿尾巴6元/克" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-21818.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211654407217_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿尾巴正宗正品鹿尾巴6元/克" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-21818.html" target="_blank" title="吉林长春梅花鹿鹿尾巴正宗正品鹿尾巴6元/克">吉林长春梅花鹿鹿尾巴正宗正品鹿尾巴6元/克</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：6.00">6.00 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid6" value="21818" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale6'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="21818" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-21816.html" target="_blank" title="吉林长春梅花鹿鹿血58元/斤   2斤起售">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211632565279_thumbnail.jpg" alt="吉林长春梅花鹿鹿血58元/斤   2斤起售" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-21816.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211632565279_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿血58元/斤   2斤起售" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-21816.html" target="_blank" title="吉林长春梅花鹿鹿血58元/斤   2斤起售">吉林长春梅花鹿鹿血58元/斤   2斤起售</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：58.00">58.00 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid7" value="21816" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale7'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="21816" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-21814.html" target="_blank" title="吉林长春梅花鹿鹿鞭胶囊200粒/瓶  200元">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211602240585_thumbnail.jpg" alt="吉林长春梅花鹿鹿鞭胶囊200粒/瓶  200元" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-21814.html">
+<img src="http://222.180.164.21/statics/attachment//store/6020/goods/201707211602240585_thumbnail.jpg" height="60" alt="吉林长春梅花鹿鹿鞭胶囊200粒/瓶  200元" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-21814.html" target="_blank" title="吉林长春梅花鹿鹿鞭胶囊200粒/瓶  200元">吉林长春梅花鹿鹿鞭胶囊200粒/瓶  200元</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：200.00">200.00 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid8" value="21814" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale8'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="21814" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						        <li class="item">
+						      		<div class="goodslist" nctype_goods="1" nctype_store="2">
+						        		<div class="goodslist_img">
+						        			<a href="/goods-20290.html" target="_blank" title="吉林长春鲜鹿茸 6.5元/g  50g起">
+<img src="http://222.180.164.21/statics/attachment/store/6020/goods/201707051251156041_thumbnail.png" alt="吉林长春鲜鹿茸 6.5元/g  50g起" border="0" />						        			</a> 
+						        		</div>
+							       	 	<div class="goodslist_intro" style="top: 230px;">
+											<div class="goodslist_photo">
+												<ul>
+						              				<li>
+						              					<a href="/goods-20290.html">
+<img src="http://222.180.164.21/statics/attachment/store/6020/goods/201707051251156041_thumbnail.png" height="60" alt="吉林长春鲜鹿茸 6.5元/g  50g起" width="60" border="0" />						              					</a>
+						              				</li>
+						                        </ul>
+											</div>
+						         				<div class="goodslist_name">
+						         					<a href="/goods-20290.html" target="_blank" title="吉林长春鲜鹿茸 6.5元/g  50g起">吉林长春鲜鹿茸 6.5元/g  50g起</a>
+						         				</div>
+											<div class="goodslist_price">
+												<em class="sale-price" title="原价：6.50">6.50 </em>
+												
+						     				</div>
+						         			<div class="goodslist_sell">
+							            		<!-- 隐藏goodsid -->
+							            		<input type="hidden" id="goodid9" value="20290" />
+								            	<ul>
+										             <li><a href="javascript:void(0)" target="_blank" class="status"><strong id='goodsSale9'>0</strong></a><p>商品销量</p></li>
+										             <li><a href="javascript:void(0)" target="_blank">0</a><p>用户评论</p></li>
+						          				</ul>
+						         			</div>
+						         			<div class="store_goods_list">
+						         				<a href="/home.html?show_c=1&store_id=6020" class="name" title="鹿产品专卖店">
+						         					鹿产品专卖店
+						         				</a>
+						         			</div>
+											<!-- 
+											<div class="goodslist_add"><a href="javascript:void(0);" class="add_cart" rel="20290" store="6020">加入购物车</a></div>
+						       				 -->
+						       			</div>
+						      		</div>
+						    	</li>
+						    <div class="clear"></div>
+					  	</ul>
+					</div>	      
+				</textarea>
+      		</div>
+      		<div>
+<div class="page" ><span class="info" >共9条记录</span>
+<span class="info">1/1</span>
+<ul><li><a  class="selected">1</a></li>
+</ul></div>      		</div>
+    	</div>
+  	</div>
+</div>
+<div style="width:100%;height:1px;clear:both;display:block;"></div>
+
+<div   style="overflow: hidden; height: auto; "> 
+	<div class="lazy-fn lazy-fn-done" id="lazy-footer">        
+		<div id="service-2014"  style=" height: auto; overflow: hidden;">
+			<div class="slogen" style="height: 92px;">
+				<img src="http://222.180.164.21/statics/attachment/adv/201705111637028780.png" width="1200" border="0" />			</div>
+			<div class="w" style=" height: auto; overflow: hidden;   padding-bottom: 20px;">
+				<dl class="fore1" style="width: 18%; padding-left: 2%;">
+					<dt>新手上路</dt>
+					<dd>
+			          		<div>
+			          			<a href="/help-17-1697.html" target="_blank">村头平台管理总则</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1218.html" target="_blank">村头商城开店流程</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1657.html" target="_blank">商户进件管理流程</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1537.html" target="_blank">村头商城旅游店铺装修...</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1221.html" target="_blank">村头商城普通店铺装修...</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1220.html" target="_blank">村头商城商品发布流程...</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-1638.html" target="_blank">“村头平台”全民电商...</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-32.html" target="_blank">购物流程</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-11.html" target="_blank">会员等级折扣</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-17-13.html" target="_blank">积分规则</a>
+			          		</div>
+					</dd>
+				</dl>
+				<dl class="fore2" style="width: 18%; padding-left: 2%;">
+					<dt>购物指南</dt>
+					<dd>
+			          		<div>
+			          			<a href="/help-18-17.html" target="_blank">网站使用条款</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-18-19.html" target="_blank">购物流程</a>
+			          		</div>
+					</dd>
+				</dl>
+				<dl class="fore3" style="width: 18%; padding-left: 2%;">		
+					<dt>配送方式</dt>
+					<dd>
+			          		<div>
+			          			<a href="/help-22-23.html" target="_blank">关于收货与验货</a>
+			          		</div>
+			          		<div>
+			          			<a href="https://m.kuaidi100.com" target="_blank">快递查询</a>
+			          		</div>
+					</dd>
+				</dl>
+				<dl class="fore4" style="width: 18%; padding-left: 2%;">
+					<dt>支付方式</dt>
+					<dd>
+			          		<div>
+			          			<a href="/help-19-29.html" target="_blank">索取发票</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-19-1222.html" target="_blank">结算与代理结算规则说...</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-19-1199.html" target="_blank">支付规则</a>
+			          		</div>
+					</dd>
+				</dl>
+				<dl class="fore5" style="width: 18%; padding-left: 2%;">		
+					<dt>售后服务</dt>
+					<dd>
+			          		<div>
+			          			<a href="/help-23-16.html" target="_blank">售后服务</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-23-18.html" target="_blank">免责条款</a>
+			          		</div>
+			          		<div>
+			          			<a href="/help-23-14.html" target="_blank">商品退换货保障</a>
+			          		</div>
+					</dd>
+				</dl>
+				<span class="clr"></span>
+			</div>
+		</div>        
+    </div>
+	<div style="border-top:1px solid #e5e5e5;  "></div>
+ 	<div class="w" style="margin-top: 20px;margin-bottom : 20px; ">
+		<div id="footer-2014" style=" border-top: none; width: 700px;padding-right: 20px;padding-top: 0px; float: left;" >
+			<div class="links" style="text-align: right;"><a rel="nofollow" target="" href="/index.html">首页</a>
+				　| <a  href="/member/member.html">会员中心</a>
+	             | <a  href="/store/business_center.html?menu=store_index">商家中心</a>
+	             | <a  href="http://www.ct918.com/pb/index.html">村头公益</a>
+	             | <a  href="/help-21-8.html">联系我们</a>
+	             | <a  href="/help-21-7.html">关于我们</a>
+			</div>
+			<div class="copyright" style="text-align: right;">
+				 渝ICP备14006202-5号 Copyright © 2016-2020 村头商城 版权所有
+		   </div>
+			<div class="copyright" style="text-align: right;">
+				 公司名称：重庆村头科技发展有限公司   地址：重庆秀山中和街道物流园区武陵北路1号  联系电话：023-76668918
+		   </div>
+				
+			<div class="authentication" style=" height: 90px; text-align: center;  padding-left: 130px; ">
+				<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50024102500270"
+					style="display:inline-block; float: right; margin-left: 30px;">
+					<img src="/themes/b2b2cv2/images/beianbgs.png" width="90" title="渝公网安备 50024102500270号"/>
+				</a>
+				<a id="_pingansec_bottomimagesmall_brand" href="http://si.trustutn.org/info?sn=842160927024393648530&certType=1" style="display: inline-block;float: right; margin-left: 30px;padding-top:20px "><img src="http://v.trustutn.org/images/cert/brand_bottom_small.jpg" width="110" height="40"/></a>
+				<a href="http://www.cqgseb.cn/ztgsgl/WebSiteMonitoring/WebUI/XFWQ/Index.aspx?xh=89" target="_blank" style="display: inline-block; float: right; margin-left: 30px; "><img  src="http://www.cqgseb.cn/ztgsgl/websitemonitoring/images/wqz.png" width="130" height="90"/></a>
+				
+				<iframe allowtransparency="true" scrolling="no" src="http://www.cqgseb.cn/ztgsgl/WebMonitor/GUILayer/eImgMana/gshdimg.aspx?sfdm=120160715152837265762" frameborder="0" height="90" width="90" style="display: inline-block;  float: right;">
+<!doctype html>
+<html>
+	<head>
+		<title>gshdimg</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+	</head>
+<body style="CURSOR: hand" onclick="agshdyz('120160715152837265762')" ms_positioning="GridLayout" bgcolor="transparent">
+	<form name="Form1" method="post" action="gshdimg.aspx?sfdm=120160715152837265762" id="Form1">
+		<input name="__VIEWSTATE" id="__VIEWSTATE" value="TMSYsSdkFSMPkHHhWs6Iu4q51+op/0D+Xihzx1CzzH5RahDb6YrNsiRVywxPmMIPWMxljpeYCtWoawG+o8LYCg3lnXgm7mi9PLR6Evy9ZhZPqWPYuxF+np29OJ7hZ7cYbgmaFYyggkCt9Zfoxv7mpfMXLwdN8B3SxgL1JxMvDfDAGvWMIhz4j1WobbXzZYL/WXASxg==" type="hidden"> 
+		<input name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" type="hidden">
+		<table id="table1" style="POSITION:absolute;TOP:0px;LEFT:0px;display:block;" align="center" border="0" cellpadding="0" cellspacing="0" height="90" width="100%">
+			<tbody>
+				<tr align="center">
+					<td align="center" valign="middle">
+						<a href="" target="_blank" id="imgHref"> 
+							<img id="imgDztb" name="imgDztb" src="" border="0" height="90" width="66"> 
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</form>
+	<script language="javascript">
+		var j=0;
+		var strsource="";
+		var strdestination="";
+
+		var strhref = document.referrer;
+		strhref=strhref.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		strhref=strhref.toLowerCase( );
+		strsource=strhref;
+		var strdomain1="http://www.ct918.com/";
+		var strdomain2="http://www.ct918.cn/";
+		var strdomain3="";
+		var strdomain4="";
+		var strdomain5="";
+		strdomain1=strdomain1.toLowerCase( );
+		strdomain2=strdomain2.toLowerCase( );
+		strdomain3=strdomain3.toLowerCase( );
+		strdomain4=strdomain4.toLowerCase( );
+		strdomain5=strdomain5.toLowerCase( );
+		strdomain1=strdomain1.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		if(strdomain1.substring(strdomain1.length-1,strdomain1.length).charCodeAt(0)==47)
+		{
+			strdomain1=strdomain1.substring(0,strdomain1.length-1);
+		}
+		strdestination=strdomain1;
+		strdomain2=strdomain2.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		if(strdomain2.substring(strdomain2.length-1,strdomain2.length).charCodeAt(0)==47)
+		{
+			strdomain2=strdomain2.substring(0,strdomain2.length-1);
+		}
+		strdomain3=strdomain3.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		if(strdomain3.substring(strdomain3.length-1,strdomain3.length).charCodeAt(0)==47)
+		{
+			strdomain3=strdomain3.substring(0,strdomain3.length-1);
+		}
+		strdomain4=strdomain4.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		if(strdomain4.substring(strdomain4.length-1,strdomain4.length).charCodeAt(0)==47)
+		{
+			strdomain4=strdomain4.substring(0,strdomain4.length-1);
+		}
+		strdomain5=strdomain5.replace(" ","").replace("www.","").replace("http:","").replace("//","").replace("/","");
+		if(strdomain5.substring(strdomain5.length-1,strdomain5.length).charCodeAt(0)==47)
+		{
+			strdomain5=strdomain5.substring(0,strdomain5.length-1);
+		}
+
+		if(strhref.toUpperCase().indexOf(strdomain1.toUpperCase())!=-1 && strdomain1!="")
+			j=1;
+		if(strhref.toUpperCase().indexOf(strdomain2.toUpperCase())!=-1 && strdomain2!="")
+			j=1;
+		if(strhref.toUpperCase().indexOf(strdomain3.toUpperCase())!=-1 && strdomain3!="")
+			j=1;
+		if(strhref.toUpperCase().indexOf(strdomain4.toUpperCase())!=-1 && strdomain4!="")
+			j=1;
+		if(strhref.toUpperCase().indexOf(strdomain5.toUpperCase())!=-1 && strdomain5!="")
+			j=1;
+		if(parent.frames.length==0)
+		{
+			j=0;
+			document.getElementById("imgDztb").src="";
+			document.getElementById("imgDztb").display="none";
+		}
+		for(i=0;i<parent.frames.length;i++)
+		{
+			try
+			{
+				if(parent.frames[i].location.href.indexOf("ztgsgl/WebMonitor/GUILayer/eImgMana/gshdimg.aspx?sfdm=")>0)
+				{
+					if(j==0)
+						j=0;
+					if(strhref.length==0)
+						strhref = parent.location.href;
+					strhref=strhref.replace(" ","").replace("www.","").replace("http:","").replace("//","");
+					if(strhref.toUpperCase().indexOf(strdomain1.toUpperCase())!=-1 && strdomain1!="")
+						j=1;
+					if(strhref.toUpperCase().indexOf(strdomain2.toUpperCase())!=-1 && strdomain2!="")
+						j=1;
+					if(strhref.toUpperCase().indexOf(strdomain3.toUpperCase())!=-1 && strdomain3!="")
+						j=1;
+					if(strhref.toUpperCase().indexOf(strdomain4.toUpperCase())!=-1 && strdomain4!="")
+						j=1;
+					if(strhref.toUpperCase().indexOf(strdomain5.toUpperCase())!=-1 && strdomain5!="")
+						j=1;
+					if(j==1)
+					{
+						j=1;
+					}
+					else
+					{
+						if(strhref.toUpperCase().indexOf("ZTGSGL/WEBMONITOR/GUILAYER/EIMGMANA/DZTBBAINFO.ASPX")<0)
+						{
+							j=0;
+							document.getElementById("imgDztb").src="";
+							document.getElementById("imgDztb").style.display="none";
+						}
+						else
+							j=1;
+					}
+
+					break;
+				}
+			}
+			catch(ex)
+			{
+				try
+				{
+					if(parent.frames[i].location.href.indexOf("ztgsgl/WebMonitor/GUILayer/eImgMana/gshdimg.aspx?sfdm=")>0)
+					{
+						if(j==0)
+							j=0;
+
+						if(strhref.toUpperCase().indexOf(strdomain1.toUpperCase())!=-1 && strdomain1!="")
+							j=1;
+						if(strhref.toUpperCase().indexOf(strdomain2.toUpperCase())!=-1 && strdomain2!="")
+							j=1;
+						if(strhref.toUpperCase().indexOf(strdomain3.toUpperCase())!=-1 && strdomain3!="")
+							j=1;
+						if(strhref.toUpperCase().indexOf(strdomain4.toUpperCase())!=-1 && strdomain4!="")
+							j=1;
+						if(strhref.toUpperCase().indexOf(strdomain5.toUpperCase())!=-1 && strdomain5!="")
+							j=1;
+						if(j==1)
+						{
+							j=1;
+						}
+						else
+						{
+							if(strhref.toUpperCase().indexOf("ZTGSGL/WEBMONITOR/GUILAYER/EIMGMANA/DZTBBAINFO.ASPX")<0)
+							{
+								j=0;
+								document.getElementById("imgDztb").src="";
+								document.getElementById("imgDztb").style.display="none";
+							}
+							else
+								j=1;
+						}
+						break;
+					}
+				}
+				catch(ex)
+				{
+					continue;
+				}
+			}
+
+		}
+
+		function agshdyz(sfdm)
+		{
+			if(j==1)
+			{
+				if(sfdm!="")
+				{
+				    document.getElementById("imgHref").href="dztbInfo.aspx?sfdm="+sfdm;
+				    document.getElementById("imgHref").target="_blank";
+			    }
+			}
+			else
+			{
+				alert("���޷��鿴������վ����"+strsource+"��������ӱ�ʶ��վ����"+strdestination);
+			}
+		}
+		</script>
+ 
+</body>
+</html>				</iframe>
+			</div>
+		</div>
+		<div style="width:460px; height: auto; overflow: hidden; padding-left: 20px;  border-left: 1px solid #e5e5e5; ">
+			<table>
+				<tr>
+					<td><img  src="/themes/b2b2cv2/images/home/ct918-sell.png" height="150"></td>
+					<td style="padding-left: 20px;"><img  src="/themes/b2b2cv2/images/home/ct918-buy.png"  height="150"></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;">村头卖家客户端</td>
+					<td style="text-align: center;">村头买家客户端</td>
+				</tr>
+			</table>
+		</div>
+	 </div>
+</div>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = "https://zz.bdstatic.com/linksubmit/push.js";
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>

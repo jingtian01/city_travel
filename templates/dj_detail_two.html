@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+    .table{
+        width: 1335px;
+        height: 800px;
+        margin-top: -5px;
+{#        margin-left: 0px;#}
+{#        background-image: {% url 'dj_background' %};#}
+        background:ghostwhite;
+        font-size: 18px;
+
+
+
+    }
+    .table2{
+        position: absolute;
+        margin-left: 150px;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    </style>
+
+    {% block cont %}
+    <div class="table">
+        <div class="table2">
+
+
+        <h3>亲爱的用户，您好，欢迎光临！</h3>
+        <p>
+        您的旅游路径为：{{ cities }}
+
+        </p>
+        {% if cities %}
+
+
+        {% for city in cities %}
+            <p>站点名称：{{ city }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_view' city=city %}" target="_blank">旅游景点</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_good' city=city %}" target="_blank">美食小吃</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_goods' city=city %}" target="_blank">特产土货</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_history' city=city %}" target="_blank">历史发展</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_person' city=city %}" target="_blank">人物代表</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'dj_famous' city=city %}" target="_blank">天气预报</a></p>
+
+            <p>---------------------------------------------------------------------------------------------------------</p>
+        {% endfor %}
+        {% else %}
+            <h4>很抱歉，这次路径不对哦</h4>
+        {% endif %}
+        {% endblock%}
+        </div>
+    </div>
+
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+

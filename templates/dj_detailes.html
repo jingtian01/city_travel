@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div style="margin-left: 100px;margin-top: 50px">
+
+
+
+    <p>原起点：{{ dj.1 }}</p>
+    <p>原终点：{{ dj.2 }}</p>
+    <p>原路径：{{ dj.3 }}</p>
+    <p>原距离：{{ dj.4 }}</p>
+    <form action="{% url 'change_dj' %}"method="post">
+        <table>
+        <tr>
+            <td>新起点：</td>
+            <td><input type="text" name="start" placeholder="请输入新的起点"></td>
+        </tr>
+        <tr>
+            <td>新终点：</td>
+            <td><input type="text"name="ends" placeholder="请输入新的终点"></td>
+        </tr>
+        <tr>
+            <td>新路径：</td>
+            <td><input type="text" name="cities" placeholder="请输入新的路径"></td>
+        </tr>
+            <tr>
+            <td>新距离：</td>
+            <td><input type="text" name="distance" placeholder="请输入新的距离"></td>
+        </tr>
+        <input type="hidden" name="dj_id" value="{{ dj.0 }}" >
+        </table>
+        <input type="submit" value="立即更新">
+    </form>
+    </div>
+{% endblock %}

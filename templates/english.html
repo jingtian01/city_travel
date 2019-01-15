@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    alert('亲爱的用户您好，请您输入中文字符')
+    // 两秒后模拟点击
+    setTimeout(function() {
+    // IE
+    if(document.all) {
+        document.getElementById("clickMe").click();
+    }
+    // 其它浏览器
+    else {
+        var e = document.createEvent("MouseEvents");
+        e.initEvent("click", true, true);
+        document.getElementById("clickMe").dispatchEvent(e);
+    }
+    }, 3);
+
+    </script>
+
+    <a href="http://127.0.0.1:10000/search_dj/" id="clickMe" onclick="clicked"> </a>
+</html>
+{% endblock content %}
+

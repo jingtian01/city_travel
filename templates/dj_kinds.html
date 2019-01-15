@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{#    <meta name="referrer" content="never">#}
+    <meta charset="UTF-8" name="referrer" content="never">
+    <title>旅游助手</title>
+    <style>
+        img{
+            width: 435px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+<body style="margin-left: 5px">
+{#<h3>123456</h3>#}
+<a href="{% url 'dj_view' city=city %} " target="_blank"><img src="http://file.azg168.cn/file/zhonghuaminsu/mingchengguji/20160218/1af5fca90d7e46d4f05f244aab94bf4b.jpg" alt="名胜古迹" title="名胜古迹"></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">名胜古迹</b>
+<a href="{% url 'dj_view_one' city=city %} " style="margin-left: 200px" target="_blank"><img src="http://img1.qunarzz.com/wugc/p228/201208/15/4302caf93add9bae93835fbb.jpg_r_480x360x95_ccf33062.jpg" alt=""></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">风景区</b>
+<a href="{% url 'dj_view_two' city=city %} " style="margin-left: 224px" target="_blank"><img src="http://img1.imgtn.bdimg.com/it/u=58699679,3767589506&fm=26&gp=0.jpg" alt=""></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">博物馆</b>
+<a href="{% url 'dj_view_three' city=city %} " style="margin-left: 0px" target="_blank"><img src="http://img2.imgtn.bdimg.com/it/u=308905050,1122309530&fm=26&gp=0.jpg" alt="公园"></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">公园</b>
+<a href="{% url 'dj_view_four' city=city %} " style="margin-left: 248px" target="_blank"><img src="http://pic23.photophoto.cn/20120506/0035035077502762_b.jpg" alt="动物园"></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">动物园</b>
+<a href="{% url 'dj_view_five' city=city %} " style="margin-left: 225px" target="_blank"><img src="http://seopic.699pic.com/photo/00020/6902.jpg_wh1200.jpg" alt="植物园"></a>
+<b style="font-size: 24px;margin-left: -300px;margin-top: 200px;color: #5a89b7">滑雪场</b>
+</body>
+</html>

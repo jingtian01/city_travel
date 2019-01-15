@@ -1,0 +1,53 @@
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />#}
+{#<style type="text/css" >#}
+{#body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-size: 20px}#}
+{#</style>#}
+{#<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HZjNHFFw3kr3i6C5LsycvRh2g8UHBOum"></script>#}
+{#<title>折线</title>#}
+{#</head>#}
+{#<body>#}
+{#<div id="allmap"></div>#}
+{#</body>#}
+{#</html>#}
+{#<script type="text/javascript" style="font-size: 20px">#}
+{##}
+{#var map = new BMap.Map("allmap",style="fontSize=20px");#}
+{#var point = new BMap.Point(126.6160, 45.7655);#}
+{#map.centerAndZoom(point, 10);#}
+{#var polyline = new BMap.Polyline([#}
+{#  new BMap.Point(125.3178, 43.8844),#}
+{#  new BMap.Point(126.6160, 45.7656),#}
+{#  new BMap.Point(129.9235, 44.6974)#}
+{#], {strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5});#}
+{#map.addOverlay(polyline);#}
+{#</script>#}
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+    stroke{
+        color: red;
+    }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HZjNHFFw3kr3i6C5LsycvRh2g8UHBOum"></script>
+<title>步行导航检索</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+var map = new BMap.Map("allmap");
+map.centerAndZoom(new BMap.Point(126.6160, 45.7656), 10);
+var walking = new BMap.WalkingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+walking.search("哈尔滨", "长春");
+</script>
