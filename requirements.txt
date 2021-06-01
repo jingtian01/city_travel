@@ -34,5 +34,5 @@ requests==2.20.1
 shortuuid==0.5.0
 six==1.11.0
 sqlparse==0.2.4
-urllib3==1.24.1
+urllib3==1.26.5
 xpinyin==0.5.6
